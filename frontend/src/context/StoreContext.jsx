@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { createContext, useEffect, useState } from "react"
+import { createContext, useState } from "react"
 // eslint-disable-next-line no-unused-vars
 import { food_list } from "../assets/frontend_assets/assets"
 export const StoreContext = createContext(null)
@@ -24,10 +24,18 @@ const StoreContextProvider = (props) => {
 
             }
 
-            useEffect(()=>{
-                console.log(cartItems);
+          // eslint-disable-next-line no-unused-vars
+          const getTotalCartAmount = () => {
+            let totalAmount = 0;
+            for(const item in cartItems){
+                if(cartItems[item] > 0){
+                     let itemInfo = food_list.find((product) => product._id === item);
+                     totalAmount += itemInfo.price* cartItems[item];
+                   }
 
-            },[cartItems])
+                }return totalAmount;
+                
+          }
 
     const contextValue = {
         food_list,
@@ -35,6 +43,8 @@ const StoreContextProvider = (props) => {
         setCartItems,
         addToCart,
         removeFromCart,
+        // eslint-disable-next-line no-undef
+        getTotalCartAmount
 
     }
     return(

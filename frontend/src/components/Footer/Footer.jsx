@@ -1,16 +1,20 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
 import './Footer.css'
-
+import { assets} from '../../assets/frontend_assets/assets'
 
 const Footer = () => {
   return (
     <div className='footer' id='footer'>
         <div className='footer-content'>
             <div className='footer-content-left'>
+                <img src={assets.logo} alt='' />
               
                 <p>Delivering happiness to your doorstep, one bite at a time!</p>
                 <div className='footer-social-icons'>
+                <img src={assets.facebook_icon} alt='' />
+                <img src={assets.twitter_icon} alt='' />
+                <img src={assets.linkedin_icon} alt='' />
                  
                 </div>
 
@@ -36,7 +40,7 @@ const Footer = () => {
 
         </div>
        <hr/>
-       <p>© 2024 Nejat. All rights reserved.</p>
+       <p className='copy-right'>© 2024 Nejat. All rights reserved.</p>
 
       
     </div>

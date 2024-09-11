@@ -19,7 +19,27 @@
 }
 .explore-menu-list::-webkit-scrollbar{
     display: none;
+ 
 }
+.explore-menu-list {
+    padding-right: 15px; /* Adds space between the list and the scrollbar */
+    overflow-y: scroll; /* Ensures that the scrollbar appears */
+}
+
+.explore-menu-list::-webkit-scrollbar {
+    width: 8px; /* Customize the scrollbar width if needed */
+}
+
+/* Optionally style the scrollbar track and thumb */
+.explore-menu-list::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Customize the track color */
+}
+
+.explore-menu-list::-webkit-scrollbar-thumb {
+    background-color: #888; /* Customize the thumb color */
+    border-radius: 10px; /* Round the scrollbar thumb */
+}
+
 .explore-menu-list-item img{
     width: 7.5vw;
     min-width: 80px;
@@ -45,4 +65,38 @@
 .explore-menu-list-item .active{
     border: 4px solid tomato;
     padding: 2px;
+}
+@media (max-width:1050px) {
+
+    .explore-menu-text{
+        max-width: 100%;
+        font-size: 14px;
+    }
+    .explore-menu-list::-webkit-scrollbar{
+        display: none;
+     
+    }
+   
+    
+}
+@media (max-width: 750px) {
+    .explore-menu-list {
+        padding-right: 15px; /* Adds space between the list and the scrollbar */
+        max-height: 100vh; /* Ensures the list has a scrollbar when content exceeds viewport height */
+        overflow-y: scroll; /* Ensures that the scrollbar appears */
+    }
+
+    .explore-menu-list::-webkit-scrollbar {
+        width: 8px; /* Customize the scrollbar width if needed */
+    }
+
+    /* Optionally style the scrollbar track and thumb */
+    .explore-menu-list::-webkit-scrollbar-track {
+        background: #f1f1f1; /* Customize the track color */
+    }
+
+    .explore-menu-list::-webkit-scrollbar-thumb {
+        background-color: #888; /* Customize the thumb color */
+        border-radius: 10px; /* Round the scrollbar thumb */
+    }
 }
