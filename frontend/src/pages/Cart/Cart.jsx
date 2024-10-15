@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 
 function Cart() {
   // eslint-disable-next-line no-unused-vars, no-undef
-  const { cartItems, food_list, removeFromCart, getTotalCartAmount } = useContext(StoreContext);
+  const { cartItems, food_list, removeFromCart, getTotalCartAmount,url } = useContext(StoreContext);
   const navigate = useNavigate();
   return (
     <div className="cart">
@@ -29,7 +29,7 @@ function Cart() {
               // eslint-disable-next-line react/jsx-key
               <div>
                 <div className="cart-items-title cart-items-item">
-                  <img src={item.image} alt="" />
+                  <img src={url+"/images/"+item.image} alt="" />
                   <p>{item.name}</p>
                   <p>{item.price} Kr</p>
                   <p>{cartItems[item._id]}</p>
