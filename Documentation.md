@@ -59,13 +59,13 @@ Based on this data, I created personas, a site map, and a prototype to guide the
 
 ### Site Map
 
-**Site Map Link**: [Link to Sitemap](<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/DWj7GBRr2xNqY4eesxl07q/U09-Site-map?node-id=0-1&embed-host=share" allowfullscreen></iframe>)
+
 
 ### Prototype
 
 **Lo-Fi Prototype Link**: [Link to Prototype](#)
 
----
+---**Site Map Link**: [Link to Sitemap](https://www.figma.com/design/Yi6mVqUDmB38yBbr8OKIIX/U09-Site-Map?node-id=0-1&node-type=canvas&t=tqGAaKdOHQzCmcv5-0)
 
 ## Frontend
 
