@@ -1,6 +1,5 @@
 
-
-# FoodJet - Food Delivery App 
+# Foodify - Food Delivery App Full Documentation
 
 ## Table of Contents
 1. [UX](#ux)
@@ -9,10 +8,10 @@
     - [Site Map](#site-map)
     - [Prototype](#prototype)
 2. [Frontend](#frontend)
-    - [Setup with React and Tailwind](#setup-with-react-and-tailwind)
+    - [Setup with React (JSX) and CSS](#setup-with-react-jsx-and-css)
     - [Key Frontend Features](#key-frontend-features)
 3. [Backend](#backend)
-    - [Setup with Node.js, Express, and TypeScript](#setup-with-nodejs-express-and-typescript)
+    - [Setup with Node.js, Express, and JavaScript](#setup-with-nodejs-express-and-javascript)
     - [Key Backend Features](#key-backend-features)
 4. [API](#api)
     - [MongoDB](#mongodb)
@@ -25,35 +24,34 @@
 
 ### User Study
 
-Before creating the project, I conducted user research to understand my target audience's preferences, needs, and behaviors when ordering food online. This research helped shape the design and functionality of the app.
+Before developing the app, I conducted user research to understand my target audience’s preferences and behavior regarding online food ordering. This research informed the app's design and functionality.
 
 #### Questions to Me:
 - **What do I already know?**
-  I know that I want to create a food delivery app that offers users a simple and seamless way to browse menus categorized by food type and make payments easily.
+  I know that I want to create a food delivery app that offers users a seamless way to browse categorized menus and process payments easily.
   
 - **What do I want to gain from this study?**
-  I want to understand how users interact with online food menus, what they prioritize in their ordering experience, and their preferred payment methods.
+  I want to understand how users interact with food menus and how they prioritize ease of navigation, security, and payment methods.
 
 - **Steps for conducting this study:**
-  I created a user survey to gather insights, followed up with some users for more in-depth interviews, and analyzed the data to inform my app’s design.
+  I created a survey to gather user insights, followed up with in-depth interviews, and analyzed the data to inform design decisions.
 
 #### Questions to Users (Stage 1):
-- How old are you?
 - How often do you order food online?
-- How do you prefer to browse food menus: by category (e.g., desserts, drinks) or by popularity?
-- What frustrates you the most about current food delivery apps?
-- Which payment methods do you prefer: card, PayPal, or digital wallets (e.g., Apple Pay)?
-- What are your expectations when ordering food online?
-  
+- Do you prefer to browse by food categories (e.g., appetizers, desserts) or by popularity?
+- What do you find frustrating about food delivery apps?
+- What payment method do you prefer (card, PayPal, digital wallets)?
+- How important is fast checkout?
+
 **Form Link**: [Survey for Food Delivery App](#)
 
 #### Analysis (Stage 2):
-Based on the responses, I gathered the following insights:
-- **Audience**: Millennials and Gen Z, aged 18-35, both genders.
-- **Priorities**: Easy navigation, fast checkout, and secure payment options.
-- **Needs**: Users want to browse categories easily and pay with minimal friction.
+Based on the responses, the target audience is:
+- **Age**: 18-35 (Millennials and Gen Z).
+- **Preferences**: Fast, easy-to-use menu browsing, with a preference for category filtering and fast checkout processes.
+- **Pain Points**: Complicated navigation and slow checkout.
 
-Based on this information, I created a persona, site map, and low-fidelity prototype to guide the project.
+Based on this data, I created personas, a site map, and a prototype to guide the project.
 
 ### Personas
 
@@ -71,20 +69,23 @@ Based on this information, I created a persona, site map, and low-fidelity proto
 
 ## Frontend
 
-### Setup with React and CSS
+### Setup with React (JSX) and CSS
 
-For the frontend, I chose **React** with **CSS** to create a responsive and dynamic interface. Below are the steps I followed to set up the frontend:
+For the frontend, I used **React** with **JSX** and **CSS** to design a clean, responsive, and user-friendly interface. Below are the steps I followed to set up the frontend:
 
 1. **Install React with Vite**:
     ```bash
-    npm create vite@latest react .
+    npm create vite@latest foodify --template react
     ```
-    I chose React with JavaScript for this project.
+    Chose **React (JavaScript)** for the project.
    
+2. **CSS for Styling**:
+   - I used **CSS** to style the components for flexibility and full control over the design.
+   - CSS files are linked directly to each React component for modular and maintainable styling.
 
-2. **Frontend Tools**:
-    - React (JavaScript)
-    - CSS for styling
+3. **Frontend Tools**:
+    - React (JSX)
+    - CSS for custom styling
     - React Router for page navigation
 
 #### Key Frontend Features
@@ -93,16 +94,16 @@ For the frontend, I chose **React** with **CSS** to create a responsive and dyna
    - Users can browse food items organized into categories such as **Appetizers**, **Main Courses**, **Desserts**, and **Drinks**.
 
 2. **Cart Management**:
-   - Users can add items to the cart and adjust quantities before proceeding to checkout.
+   - Users can add items to their cart, adjust quantities, and proceed to checkout.
 
 3. **User Authentication**:
-   - User sign-up and login functionality using JWT tokens for secure authentication.
+   - User sign-up and login features are implemented with JWT-based authentication to ensure secure sessions.
 
 4. **Stripe Integration for Payment**:
-   - Stripe is integrated into the checkout process to handle secure payments.
+   - Stripe is integrated into the checkout page for secure online payments, ensuring smooth transactions.
 
 5. **Responsive Design**:
-   - The app is responsive and works across all screen sizes (mobile, tablet, desktop).
+   - The app is responsive, optimized for mobile, tablet, and desktop using media queries in **CSS**.
 
 ---
 
@@ -110,49 +111,45 @@ For the frontend, I chose **React** with **CSS** to create a responsive and dyna
 
 ### Setup with Node.js, Express, and JavaScript
 
-For the backend, I used **Node.js** and **Express** with **JavaScript** for better type safety. The following steps were taken to set up the backend:
+For the backend, I used **Node.js** and **Express** with **JavaScript**. Below are the steps to set up the backend:
 
 1. **Initialize Node.js and Express**:
     ```bash
     npm init -y
     npm install express dotenv
     ```
-   
-2. **Install TypeScript**:
-    ```bash
-    npm install -D typescript @types/node @types/express
-    npx tsc --init
-    ```
+   This sets up the basic Node.js environment with Express as the web server.
 
-3. **Setup for Development**:
-    ```bash
-    npm install -D nodemon ts-node
-    ```
-    Configured **nodemon** for live updates during development and **ts-node** to run TypeScript files directly.
-
-4. **Create Server Files**:
-   - `app.ts`: Handles Express routes and middleware.
-   - `server.ts`: Starts the server on the specified port.
-
-5. **CORS Setup**:
+2. **CORS Setup**:
     ```bash
     npm install cors
     ```
-   I configured CORS to allow cross-origin requests from the frontend.
+   Configured CORS to allow requests from the frontend.
+
+3. **Backend Tools**:
+    - Node.js
+    - Express for server-side handling
+    - MongoDB for database management
+    - Stripe API for handling payments
+
+4. **File Structure**:
+   - **app.js**: Handles Express routes and middleware.
+   - **server.js**: Runs the server on a specified port.
+   - **routes**: Manages different routes for authentication, menu, and orders.
 
 #### Key Backend Features
 
 1. **User Authentication**:
-   - JWT-based user registration and login.
+   - JWT-based user authentication (register, login, and logout).
 
 2. **Menu Management**:
-   - API endpoints to retrieve menu items based on categories.
-   
+   - API routes to get food items based on their categories.
+
 3. **Order Management**:
-   - Backend handles placing orders, storing them in MongoDB, and updating order statuses.
+   - Orders are placed and stored in MongoDB, including order status and delivery details.
 
 4. **Stripe Payment Integration**:
-   - Backend routes for initiating and confirming payments via Stripe’s API.
+   - Stripe API is used to process payments securely. Backend routes are created to initiate and confirm payments.
 
 ---
 
@@ -160,39 +157,37 @@ For the backend, I used **Node.js** and **Express** with **JavaScript** for bett
 
 ### MongoDB
 
-For the database, I used **MongoDB** to store user information, menu items, categories, and order details.
+For the database, I used **MongoDB** to store user details, food items, and order information.
 
 1. **MongoDB Connection**:
-    - I used the **mongoose** library to connect and interact with the MongoDB database.
+    - I used **Mongoose** to connect to MongoDB and define schema models.
     ```bash
     npm install mongoose
     ```
-2. **Data Models**:
-    - **User**: Stores user details, including name, email, and order history.
-    - **Menu Item**: Stores food items categorized by type (e.g., Appetizer, Dessert).
-    - **Order**: Stores user orders, payment status, and delivery details.
+
+2. **Schema Models**:
+    - **User**: Stores user credentials, order history, and personal details.
+    - **Menu Item**: Stores food items categorized by type.
+    - **Order**: Stores the order information, including the user, items ordered, payment status, and delivery address.
 
 ### Stripe Payment Integration
 
-Stripe is integrated for secure payment processing.
+Stripe is integrated for processing payments.
 
 1. **Install Stripe SDK**:
     ```bash
     npm install stripe
     ```
-   
-2. **Stripe Configuration**:
-   - Backend routes handle payment initiation and confirmation.
-   - Webhooks are used to listen for payment status updates from Stripe.
+
+2. **Payment Process**:
+   - Users can pay using Stripe, with backend routes handling the payment initiation and confirmation.
+   - Webhooks are used to listen for payment events from Stripe, ensuring payments are completed securely.
 
 ### API Testing with Insomnia
 
-To test the API, I used **Insomnia** for simulating requests and ensuring everything works as expected.
+To test the API, I used **Insomnia** to simulate HTTP requests and validate the API functionality.
 
-1. **GET Menu Items**: Test retrieving all menu items by category.
-2. **POST Order**: Test placing an order with selected menu items and initiating Stripe payment.
-3. **POST Payment Confirmation**: Ensure Stripe webhook confirms payment status.
+1. **GET /menu**: Test fetching food items by category.
+2. **POST /orders**: Test placing an order and confirming payment.
+3. **POST /payments**: Test initiating and confirming Stripe payments.
 
----
-
-This documentation should guide you through the entire process of developing your food delivery app, from UX research to frontend and backend development, and API integration.
