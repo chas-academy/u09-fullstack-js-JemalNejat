@@ -10,4 +10,12 @@
 }
 .navbar .profile{
     width: 40px;
+    border-radius: 50%;
+    border: 2px solid #f1ebeb;
 }
+h2{
+    color: tomato;
+}
+
+
+    

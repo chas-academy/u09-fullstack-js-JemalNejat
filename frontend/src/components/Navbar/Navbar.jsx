@@ -3,7 +3,6 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useContext, useState } from 'react'
 import './Navbar.css'
-import { assets as adminAssets, assets } from '../../assets/admin_assets/assets'
 import { assets as frontendAssets } from '../../assets/frontend_assets/assets'
 import { Link, useNavigate } from 'react-router-dom'
 import { StoreContext } from '../../context/StoreContext'
@@ -13,9 +12,10 @@ import { StoreContext } from '../../context/StoreContext'
 
 
 // eslint-disable-next-line react/prop-types
-const Navbar = ({setShowLogin}) => {
+const Navbar = ({setShowLogin, setSearchQuery }) => {
     const [menu,setMenu] = useState("home");
     const {getTotalCartAmount,token,setToken} = useContext(StoreContext);
+    const [query, setQuery] = useState(""); 
     const navigate = useNavigate();
     const logout = () => {
       localStorage.removeItem("token");
@@ -25,10 +25,15 @@ const Navbar = ({setShowLogin}) => {
 
     }
     
-
+    const handleSearch = (event) => {
+      setQuery(event.target.value);
+      setSearchQuery(event.target.value); 
+    }
+  
   return (
     <div className='navbar'>
-        <Link to={'/'}><img src={frontendAssets.logo} alt="" className='logo' /></Link>
+        <Link to={'/'}><img src={frontendAssets.mylogo} alt="" className='logo' /></Link>
+        
         <ul className='navbar-menu'>
             <Link to='/' onClick={()=>setMenu("home")} className={menu==="home"?"active":""}>home</Link>
             <a href='#explore-menu' onClick={()=>setMenu("menu")} className={menu==="menu"?"active":""}>menu</a>

@@ -1,6 +1,8 @@
 import basket_icon from './basket_icon.png'
 import logo from './logo.png'
+import mylogo from './mylogo.webp'
 import header_img from './header_img.png'
+import header_2 from './header_2.jpg'
 import search_icon from './search_icon.png'
 import menu_1 from './menu_1.png'
 import menu_2 from './menu_2.png'
@@ -64,6 +66,7 @@ export const assets = {
     logo,
     basket_icon,
     header_img,
+    header_2,
     search_icon,
     rating_starts,
     add_icon_green,
@@ -79,7 +82,8 @@ export const assets = {
     profile_icon,
     logout_icon,
     bag_icon,
-    parcel_icon
+    parcel_icon,
+    mylogo
 }
 
 export const menu_list = [
