@@ -55,17 +55,15 @@ Based on this data, I created personas, a site map, and a prototype to guide the
 
 ### Personas
 
-**Persona Link**: [Link to Personas](#)
+**Persona Link**: [Link to Personas](https://docs.google.com/document/d/1-_-itfN2-aUfKN3HitbGSY7sqs7AveXqFciw5sad_kU/edit?tab=t.0)
 
 ### Site Map
-
-
 
 ### Prototype
 
 **Lo-Fi Prototype Link**: [Link to Prototype](#)
 
----**Site Map Link**: [Link to Sitemap](https://www.figma.com/design/Yi6mVqUDmB38yBbr8OKIIX/U09-Site-Map?node-id=0-1&node-type=canvas&t=tqGAaKdOHQzCmcv5-0)
+**Site Map Link**: [Link to Sitemap](https://www.figma.com/design/Yi6mVqUDmB38yBbr8OKIIX/U09-Site-Map?node-id=0-1&node-type=canvas&t=tqGAaKdOHQzCmcv5-0)
 
 ## Frontend
 
