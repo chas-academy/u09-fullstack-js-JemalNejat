@@ -7,6 +7,10 @@
 .navbar .logo{
     width: 150px;
     }
+.navbar h2{
+    color: tomato;
+}
+
 .navbar-menu{
     display: flex;
     list-style: none;
