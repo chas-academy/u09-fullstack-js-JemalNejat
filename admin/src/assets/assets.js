@@ -7,6 +7,8 @@ import parcel_icon from './parcel_icon.png'
 import mylogo from './mylogo.webp'
 import nejat from './nejat.jpg'
 
+export const url = 'https://u09-fullstack-js-jemalnejat-2.onrender.com'
+
 export const assets ={
     logo,
     add_icon,
@@ -18,4 +20,3 @@ export const assets ={
     nejat
 }
 
-export const url = 'http://localhost:4000'
