@@ -4,14 +4,9 @@
     justify-content: space-between;
     align-items: center;
 }
-.navbar .logo h2 {
+.navbar .logo{
     width: 150px;
-    
-   
-    
-    
-   
-}
+    }
 .navbar-menu{
     display: flex;
     list-style: none;
