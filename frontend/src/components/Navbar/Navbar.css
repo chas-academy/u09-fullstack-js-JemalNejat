@@ -4,11 +4,15 @@
     justify-content: space-between;
     align-items: center;
 }
-.navbar .logo {
+.navbar .logo h2 {
     width: 150px;
+    
+    color:#49557e;
+    
+    
    
 }
-.navbar-menu h2{
+.navbar-menu{
     display: flex;
     list-style: none;
     font-size: 18px;
