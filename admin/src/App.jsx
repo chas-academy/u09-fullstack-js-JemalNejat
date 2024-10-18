@@ -11,7 +11,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
-  const url = "https://u09-fullstack-js-jemalnejat-backend.onrender.com/0"
+  const url = "https://u09-fullstack-js-jemalnejat-backend.onrender.com"
   return (
     <div>
       <ToastContainer/>
