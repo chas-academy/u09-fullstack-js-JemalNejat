@@ -8,7 +8,7 @@ import mylogo from './mylogo.webp'
 import nejat from './nejat.jpg'
 
 
-export const url = 'https://u09-fullstack-js-jemalnejat-backend.onrender.com/0';
+export const url = 'https://u09-fullstack-js-jemalnejat-backend.onrender.com/';
 
 
 
