@@ -6,6 +6,7 @@ import './Orders.css'
 import {toast} from "react-toastify"
 import axios from "axios"
 import { assets } from '../../assets/assets'
+import { assets as frontendAssets } from '../../assets/frontend_assets/assets'
 
 const Order = ({url}) => {
   const [orders,setOrders] = useState([]);
