@@ -32,7 +32,7 @@ const Navbar = ({setShowLogin, setSearchQuery }) => {
   
   return (
     <div className='navbar'>
-        <Link to={'/'}><img src={frontendAssets.mylogo} alt="" className='logo' </Link>
+        <Link to={'/'}><img src={frontendAssets.mylogo} alt="" className='logo'</Link>
         
         <ul className='navbar-menu'>
             <Link to='/' onClick={()=>setMenu("home")} className={menu==="home"?"active":""}>home</Link>
