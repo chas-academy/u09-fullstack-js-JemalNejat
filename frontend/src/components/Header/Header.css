@@ -1,10 +1,10 @@
-.header{
+
+.header {
     height: 34vw;
     margin: 30px auto;
-    background: url('/header_2.jpg') no-repeat;
+    background: var(--header-background) no-repeat;
     background-size: contain;
     position: relative;
-
 }
 .header-contents{
     position: absolute;
