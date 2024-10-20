@@ -2,6 +2,7 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
 import './Header.css'
+import { assets as frontendAssets } from '../../assets/frontend_assets/assets'
 
 
 
@@ -13,7 +14,7 @@ const Header = () => {
     <div className='header'>
         <div className='header-contents'>
                 style={{ 
-        backgroundImage: `url(${assets.header_2})`, 
+        backgroundImage: `url(${frontendAssets.header_2})`, 
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover', // Cover the entire container
         backgroundPosition: 'center' // Center the image
