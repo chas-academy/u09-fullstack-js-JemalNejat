@@ -67,39 +67,42 @@ const registerUser = async (req, res) => {
 
   }
 };
-// Create admin user function
-const createAdmin = async (req, res) => {
-    const { name, email, password } = req.body;
+// Admin login function
+export const loginAdmin = async (req, res) => {
+    const { email, password } = req.body; // Get the email and password from the request body
 
     try {
-        // Check if admin already exists
-        const exists = await userModel.findOne({ email });
-        if (exists) {
-            return res.json({ success: false, message: "Admin already exists" });
+        // Find user by email
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(401).json({ success: false, message: "Invalid credentials." });
         }
 
-        // Hash the password
-        const salt = await bcrypt.genSalt(10);
-        const hashedPassword = await bcrypt.hash(password, salt);
+        // Check if the password matches
+        const isMatch = await user.comparePassword(password);
+        if (!isMatch) {
+            return res.status(401).json({ success: false, message: "Invalid credentials." });
+        }
 
-        // Create the admin user
-        const newAdmin = new userModel({
-            name: name,
-            email: email,
-            role: "admin", // Set role as admin
-            password: hashedPassword,
-        });
+        // Check if user is an admin
+        if (user.role !== 'admin') {
+            return res.status(403).json({ success: false, message: "Access denied. Not an admin." });
+        }
 
-        const admin = await newAdmin.save(); // Save the admin
-        const token = createToken(admin._id); // Generate a token
-        res.json({ success: true, token }); // Return success response
+        // Create a JWT token with user info, including role
+        const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1h' });
+
+        // Respond with token and user role
+        res.json({ success: true, token, role: user.role });
     } catch (error) {
         console.error(error);
-        res.json({ success: false, message: "Error creating admin" });
+        res.status(500).json({ success: false, message: "Server error." });
     }
 };
 
 
 
 
-export { loginUser, registerUser, createAdmin };
+
+
+export { loginUser, registerUser, loginAdmin };
