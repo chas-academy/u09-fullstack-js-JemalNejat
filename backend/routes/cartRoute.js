@@ -5,8 +5,8 @@ import adminMiddleware from "../middleware/admin.js";
 
 const cartRouter = express.Router();
 
-cartRouter.post("/add",[authMiddleware, adminMiddleware], addToCart)
-cartRouter.post("/remove",[authMiddleware, adminMiddleware],RemoveFromCart)
-cartRouter.post("/get",[authMiddleware, adminMiddleware],getCart)
+cartRouter.post("/add",[authMiddleware], addToCart)
+cartRouter.post("/remove",[authMiddleware],RemoveFromCart)
+cartRouter.post("/get",[authMiddleware],getCart)
 
 export default cartRouter;
