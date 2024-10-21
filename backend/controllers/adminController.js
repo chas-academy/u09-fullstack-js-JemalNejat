@@ -72,7 +72,8 @@ const updateUser = async (req, res) => {
     })
     const user = await updateUser.save()
    
-    res.json({ success: true, "User added successfully" })
+   res.json({ success: true, message: "User added successfully" });
+
 
   } catch (error) {
     console.log(error);
@@ -89,7 +90,8 @@ const deleteUser = async (req, res) => {
     if (!exists) {
       return res.json({ success: false, message: "Cannot find user to delete" });
     }
-    res.json({success:true, "User deleted successfully"})
+res.json({ success: true, message: "User added successfully" });
+
   } catch (error) {
     console.log(error);
     res.json({success:false,message:"Error"})
