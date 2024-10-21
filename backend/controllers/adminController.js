@@ -32,7 +32,9 @@ const addUser = async (req, res) => {
        password:hashedPassword 
     })
     const user = await newUser.save()
-    res.json({success:true, "User added successfully"})
+   
+    res.json({ success: true, message: "User added successfully" });
+
   } catch (error) {
     console.log(error);
     res.json({success:false,message:"Error"})
