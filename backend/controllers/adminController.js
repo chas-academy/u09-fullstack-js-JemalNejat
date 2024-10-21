@@ -69,7 +69,9 @@ const updateUser = async (req, res) => {
        password: hashedPassword 
     })
     const user = await updateUser.save()
-    res.json({success:true, "User updated successfully"})
+   
+    res.json({ success: true, "User added successfully" })
+
   } catch (error) {
     console.log(error);
     res.json({success:false,message:"Error"})
