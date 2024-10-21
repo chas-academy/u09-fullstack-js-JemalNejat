@@ -1,0 +1,10 @@
+import express from "express"
+import { addUser, updateUser, deleteUser } from "../controllers/adminController.js"
+
+const adminRouter = express.Router()
+
+adminRouter.post("/users/add", addUser)
+adminRouter.put("/users/update", updateUser)
+adminRouter.delete("/users/delete", deleteUser)
+
+export default adminRouter;
