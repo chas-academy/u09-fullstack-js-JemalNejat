@@ -3,8 +3,8 @@ import { addUser, updateUser, deleteUser } from "../controllers/adminController.
 
 const adminRouter = express.Router()
 
-adminRouter.post("/users/add", addUser)
-adminRouter.put("/users/update", updateUser)
-adminRouter.delete("/users/delete", deleteUser)
+adminRouter.post("/users/add", [authMiddleware, adminMiddleware], addUser)
+adminRouter.put("/users/update", [authMiddleware, adminMiddleware], updateUser)
+adminRouter.delete("/users/delete", [authMiddleware, adminMiddleware], deleteUser)
 
 export default adminRouter;
