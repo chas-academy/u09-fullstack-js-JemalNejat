@@ -67,5 +67,39 @@ const registerUser = async (req, res) => {
 
   }
 };
+// Create admin user function
+const createAdmin = async (req, res) => {
+    const { name, email, password } = req.body;
 
-export { loginUser, registerUser };
+    try {
+        // Check if admin already exists
+        const exists = await userModel.findOne({ email });
+        if (exists) {
+            return res.json({ success: false, message: "Admin already exists" });
+        }
+
+        // Hash the password
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(password, salt);
+
+        // Create the admin user
+        const newAdmin = new userModel({
+            name: name,
+            email: email,
+            role: "admin", // Set role as admin
+            password: hashedPassword,
+        });
+
+        const admin = await newAdmin.save(); // Save the admin
+        const token = createToken(admin._id); // Generate a token
+        res.json({ success: true, token }); // Return success response
+    } catch (error) {
+        console.error(error);
+        res.json({ success: false, message: "Error creating admin" });
+    }
+};
+
+
+
+
+export { loginUser, registerUser, createAdmin };
