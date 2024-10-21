@@ -1,7 +1,8 @@
 import express from "express"
 import { addUser, updateUser, deleteUser } from "../controllers/adminController.js"
-import authMiddleware from "../middleware/authMiddleware.js";  
-import adminMiddleware from "../middleware/adminMiddleware.js"; 
+ 
+import adminMiddleware from "../middleware/admin.js"; 
+import authMiddleware from '../middleware/auth.js';
 
 const adminRouter = express.Router()
 
