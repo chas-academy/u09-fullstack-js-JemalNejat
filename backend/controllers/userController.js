@@ -105,4 +105,4 @@ export const loginAdmin = async (req, res) => {
 
 
 
-export { loginUser, registerUser, loginAdmin };
+export { loginUser, registerUser };
