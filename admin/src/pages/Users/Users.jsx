@@ -36,26 +36,28 @@ const UserManagement = ({ url }) => {
       return;
     }
 
-    try {
-      const userPayload = { name, email, role };
-      let response;
+    const userPayload = { name, email, role };
 
+    try {
+      let response;
       if (currentUserId) {
+        // Update existing user
         response = await axios.put(`${url}/api/user/update/${currentUserId}`, userPayload);
       } else {
+        // Add new user
         response = await axios.post(`${url}/api/user/add`, userPayload);
       }
 
       if (response.data && response.data.success) {
         toast.success(currentUserId ? 'User updated successfully' : 'User added successfully');
-        fetchAllUsers();
-        resetForm();
+        fetchAllUsers(); // Refresh the user list after submission
+        resetForm(); // Reset form fields
       } else {
-        toast.error('Error adding/updating user');
+        toast.error('Error adding/updating user: ' + (response.data.message || ''));
       }
     } catch (error) {
       console.error('Error adding/updating user:', error);
-      toast.error('Error adding/updating user');
+      toast.error('Error adding/updating user: ' + (error.response?.data?.message || ''));
     }
   };
 
@@ -73,13 +75,13 @@ const UserManagement = ({ url }) => {
       const response = await axios.delete(`${url}/api/user/delete`, { data: { _id: userId } });
       if (response.data && response.data.success) {
         toast.success('User deleted successfully');
-        fetchAllUsers();
+        fetchAllUsers(); // Refresh the user list
       } else {
         toast.error('Error deleting user');
       }
     } catch (error) {
       console.error('Error deleting user:', error);
-      toast.error('Error deleting user');
+      toast.error('Error deleting user: ' + (error.response?.data?.message || ''));
     }
   };
 
