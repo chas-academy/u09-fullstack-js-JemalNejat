@@ -15,7 +15,7 @@ const UserManagement = ({ url }) => {
 
   const fetchAllUsers = async () => {
     try {
-      const response = await axios.get(`${url}/api/user/list`);
+      const response = await axios.get(`${url}/api/users/list`);
       if (response.data.success) {
         setUsers(response.data.data);
       } else {
@@ -31,8 +31,8 @@ const UserManagement = ({ url }) => {
     event.preventDefault();
     try {
       const response = currentUserId
-        ? await axios.put(`${url}/api/user/update/${currentUserId}`, { name, email, role })
-        : await axios.post(`${url}/api/user/add`, { name, email, role });
+        ? await axios.put(`${url}/api/users/update/${currentUserId}`, { name, email, role })
+        : await axios.post(`${url}/api/users/add`, { name, email, role });
 
       if (response.data.success) {
         toast.success(currentUserId ? 'User updated successfully' : 'User added successfully');
@@ -56,7 +56,7 @@ const UserManagement = ({ url }) => {
 
   const handleDelete = async (userId) => {
     try {
-      const response = await axios.delete(`${url}/api/user/delete`, { data: { _id: userId } });
+      const response = await axios.delete(`${url}/api/users/delete`, { data: { _id: userId } });
       if (response.data.success) {
         toast.success('User deleted successfully');
         fetchAllUsers(); // Refresh the user list
