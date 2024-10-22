@@ -28,6 +28,11 @@ const UserManagement = ({ url }) => {
     }
   };
 
+  useEffect(() => {
+  fetchAllUsers(); // Call the function to fetch users when the component mounts
+}, []);
+
+
   // Function to handle form submission
   const handleSubmit = async (event) => {
     event.preventDefault(); // Prevent default form submission
