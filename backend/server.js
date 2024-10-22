@@ -6,7 +6,7 @@ import foodRouter from "./routes/foodRoute.js"
 import userRouter from "./routes/userRoute.js"
 import cartRouter from "./routes/cartRoute.js"
 import orderRouter from "./routes/orderRoute.js"
-import userRouter from './routes/adminRoute.js';
+import adminRouter from './routes/adminRoute.js';
  
 
 import 'dotenv/config'
