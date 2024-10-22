@@ -6,7 +6,8 @@ import './users.css';
 import { toast } from "react-toastify";
 import axios from "axios";
  
-import { assets as frontendAssets } from '../../assets/frontend_assets/assets'
+import { assets as frontendAssets } from '../../assets/frontend/src/assets/frontend_assets/assets.js'
+
 
 const Users = ({ url }) => {
   const [users, setUsers] = useState([]);
