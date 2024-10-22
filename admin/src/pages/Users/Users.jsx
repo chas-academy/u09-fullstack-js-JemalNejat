@@ -94,9 +94,21 @@ const UserManagement = ({ url }) => {
     <div className="user-management">
       <h3>User Management</h3>
       <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required />
-        <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        <select value={role} onChange={(e) => setRole(e.target.value)}> 
+        <input
+          type="text"
+          placeholder="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <select value={role} onChange={(e) => setRole(e.target.value)}>
           <option value="user">User</option>
           <option value="admin">Admin</option>
         </select>
