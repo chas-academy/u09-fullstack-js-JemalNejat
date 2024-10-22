@@ -1,122 +1,84 @@
 /* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react';
-import './Users.css'; // You may want to create a specific CSS file for users
-import { toast } from 'react-toastify';
-import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import './Orders.css'
+import {toast} from "react-toastify"
+import axios from "axios"
+import { assets } from '../../assets/assets'
 
-const UserManagement = ({ url }) => {
-  const [users, setUsers] = useState([]);
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [role, setRole] = useState('user'); // Default role
-  const [currentUserId, setCurrentUserId] = useState(null); // For update functionality
 
-  const fetchAllUsers = async () => {
-    try {
-      const response = await axios.get(`${url}/api/user/list`);
-      if (response.data.success) {
-        setUsers(response.data.data);
-      } else {
-        toast.error('Error fetching users');
-      }
-    } catch (error) {
-      console.error(error);
-      toast.error('Error fetching users');
+const Order = ({url}) => {
+  const [orders,setOrders] = useState([]);
+  const fetchAllOrders = async () => {
+    const response = await axios.get(url+"/api/order/list");
+    if (response.data.success) {
+      setOrders(response.data.data);
+      console.log(response.data.data);
+
+    }else {
+        toast.error("Error")
     }
-  };
+  }
+  const statusHandler = async (event,orderId) => {
+    const response = await axios.post(url+"/api/order/status",{
+      orderId,
+      status:event.target.value
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      const response = currentUserId
-        ? await axios.put(`${url}/api/user/update/${currentUserId}`, { name, email, role })
-        : await axios.post(`${url}/api/user/add`, { name, email, role });
+    })
+    if (response.data.success) {
+      await fetchAllOrders();
+      
 
-      if (response.data.success) {
-        toast.success(currentUserId ? 'User updated successfully' : 'User added successfully');
-        fetchAllUsers(); // Refresh the user list
-        resetForm(); // Reset the form
-      } else {
-        toast.error('Error adding/updating user');
-      }
-    } catch (error) {
-      console.error(error);
-      toast.error('Error adding/updating user');
+    }else {
+        toast.error("Error")
     }
-  };
+    
 
-  const handleEdit = (user) => {
-    setName(user.name);
-    setEmail(user.email);
-    setRole(user.role);
-    setCurrentUserId(user._id); // Set ID for update
-  };
-
-  const handleDelete = async (userId) => {
-    try {
-      const response = await axios.delete(`${url}/api/user/delete`, { data: { _id: userId } });
-      if (response.data.success) {
-        toast.success('User deleted successfully');
-        fetchAllUsers(); // Refresh the user list
-      } else {
-        toast.error('Error deleting user');
-      }
-    } catch (error) {
-      console.error(error);
-      toast.error('Error deleting user');
-    }
-  };
-
-  const resetForm = () => {
-    setName('');
-    setEmail('');
-    setRole('user');
-    setCurrentUserId(null); // Reset the current user ID
-  };
-
-  useEffect(() => {
-    fetchAllUsers();
-  }, []);
+  }
+  useEffect(()=>{
+   fetchAllOrders();
+  },[])
 
   return (
-    <div className='user-management'>
-      <h3>User Management</h3>
-      <form onSubmit={handleSubmit}>
-        <input
-          type='text'
-          placeholder='Name'
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
-        <input
-          type='email'
-          placeholder='Email'
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <select value={role} onChange={(e) => setRole(e.target.value)}>
-          <option value="user">User</option>
-          <option value="admin">Admin</option>
-        </select>
-        <button type='submit'>{currentUserId ? 'Update User' : 'Add User'}</button>
-        {currentUserId && <button type='button' onClick={resetForm}>Cancel</button>}
-      </form>
-      
-      <div className='user-list'>
-        {users.map((user) => (
-          <div key={user._id} className='user-item'>
-            <p>{user.name} - {user.email} ({user.role})</p>
-            <button onClick={() => handleEdit(user)}>Edit</button>
-            <button onClick={() => handleDelete(user._id)}>Delete</button>
+    <div className='order add'>
+      <h3>Order Page</h3>
+      <div className='order-list'>
+        {orders.map((order,index)=>(
+          <div key={index} className='order-item'>
+            <img src={assets.parcel_icon} alt='' />
+            <div>
+              <p className='order-item-food'>
+                {order.items.map((item,index)=>{
+                  if (index===order.items.length-1){
+                    return item.name + " x " + item.quantity
+                  }else{
+                    return item.name + " x " + item.quantity + ", "
+                  }
+                })}
+              </p>
+              <p className="order-item-name">{order.address.firstName + " " + order.address.lastName} </p>
+              <div className="order-item-address"> 
+                <p>{order.address.street+","}</p>
+                <p>{order.address.city+", " +order.address.state+", "+order.address.country+", "+order.address.zipcode}</p>
+              </div>
+              <p className='order-item-phone'>{order.address.phone}</p>
+ 
+            </div>
+            <p>Items : {order.items.length}</p>
+            <p>{order.amount} SEK</p>
+            <select onChange={(event)=>statusHandler(event,order._id)} value={order.status}>
+              <option value="Food Processing">Food Processing</option>
+              <option value="Out for delivery">Out for delivery</option>
+              <option value="Delivered">Delivered</option>
+            </select>
           </div>
         ))}
-      </div>
-    </div>
-  );
-};
 
-export default UserManagement;
+      </div>
+     
+    </div>
+  ) 
+}
+
+export default Order
