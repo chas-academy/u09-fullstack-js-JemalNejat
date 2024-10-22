@@ -109,7 +109,7 @@ const UserManagement = ({ url }) => {
           <option value="admin">Admin</option>
         </select>
         <button type='submit'>{currentUserId ? 'Update User' : 'Add User'}</button>
-        {currentUserId && <button type='button' onClick={resetForm}>Cancel</button>} // Show cancel button when editing
+        {currentUserId && <button type='button' onClick={resetForm}>Cancel</button>} 
       </form>
       
       <div className='user-list'>
@@ -122,7 +122,7 @@ const UserManagement = ({ url }) => {
             </div>
           ))
         ) : (
-          <p>No users found</p> // Show message if no users
+          <p>No users found</p> 
         )}
       </div>
     </div>
