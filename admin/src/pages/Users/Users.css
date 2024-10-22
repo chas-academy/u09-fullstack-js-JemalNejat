@@ -1,74 +1,74 @@
-.user-item {
-    display: grid;
-    grid-template-columns: 0.5fr 2fr 1fr 1fr;
-    align-items: start;
-    gap: 30px;
-    border: 1px solid tomato; /* Use a similar color for borders */
-    padding: 20px; /* Padding around each user item */
-    margin: 30px 0; /* Margin between user items */
-    font-size: 14px; /* Default font size */
-    color: #505050; /* Text color */
-    transition: background-color 0.3s; /* Smooth transition for hover effect */
+.user-management {
+    padding: 20px;
+    font-size: 14px;
+    color: #505050;
 }
 
-.user-item:hover {
-    background-color: #ffe8e4; /* Change background on hover */
+.user-management h3 {
+    margin-bottom: 20px;
+}
+
+.user-item {
+    display: grid;
+    grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr;
+    align-items: start;
+    gap: 30px;
+    border: 1px solid tomato;
+    padding: 20px;
+    margin: 30px 0;
 }
 
 .user-item p {
-    margin: 0; /* Reset margin for paragraphs */
-}
-
-.user-item-name {
-    font-weight: 600; /* Bold user names */
-}
-
-.user-item-email {
-    color: #7a7a7a; /* Different color for email */
+    margin: 0; /* Reset default margins */
 }
 
 .user-item select {
-    background-color: #ffe8e4; /* Same background color as orders */
-    border: 1px solid tomato; /* Same border style */
-    width: max(10vw, 120px); /* Responsive width */
-    padding: 10px; /* Padding in the select dropdown */
-    outline: none; /* Remove outline */
+    background-color: #ffe8e4;
+    border: 1px solid tomato;
+    width: max(10vw, 120px);
+    padding: 10px;
+    outline: none;
+}
+
+.user-list {
+    margin-top: 20px;
 }
 
 .user-management form {
+    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
-    margin-bottom: 20px; /* Space below the form */
 }
 
 .user-management input,
 .user-management select {
-    margin-bottom: 10px; /* Space below each input */
-    padding: 8px; /* Padding in inputs */
+    margin-bottom: 10px; /* Space between inputs */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 .user-management button {
-    background-color: tomato; /* Button color */
-    color: white; /* Button text color */
-    padding: 10px; /* Button padding */
-    border: none; /* Remove border */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s; /* Smooth transition for hover effect */
+    background-color: tomato;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
 }
 
 .user-management button:hover {
-    background-color: darkred; /* Darker color on hover */
+    background-color: darkred;
 }
 
 @media (max-width: 1000px) {
     .user-item {
-        font-size: 12px; /* Smaller font size on small screens */
-        grid-template-columns: 1fr 1.5fr; /* Adjust grid for smaller screens */
-        padding: 15px 8px; /* Adjust padding */
+        font-size: 12px;
+        grid-template-columns: 0.5fr 2fr 1fr;
+        padding: 15px 8px;
     }
 
     .user-item select {
-        padding: 5px; /* Smaller padding for selects */
-        font-size: 12px; /* Smaller font for selects */
+        padding: 5px;
+        font-size: 12px;
     }
 }
