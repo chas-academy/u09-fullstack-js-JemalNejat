@@ -7,18 +7,18 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 
 const UserManagement = ({ url }) => {
-  const [users, setUsers] = useState([]); 
-  const [name, setName] = useState(''); 
-  const [email, setEmail] = useState(''); 
-  const [role, setRole] = useState('user'); 
-  const [currentUserId, setCurrentUserId] = useState(null); 
+  const [users, setUsers] = useState([]); // State for storing users
+  const [name, setName] = useState(''); // State for name input
+  const [email, setEmail] = useState(''); // State for email input
+  const [role, setRole] = useState('user'); // Default role state
+  const [currentUserId, setCurrentUserId] = useState(null); // State for editing user
 
   // Function to fetch all users
   const fetchAllUsers = async () => {
     try {
       const response = await axios.get(`${url}/api/user/list`); // Fetching users from API
       if (response.data.success) {
-        setUsers(response.data.data); // Set the users if the fetch is successful
+        setUsers(response.data.data || []); // Ensure users is an array
       } else {
         toast.error('Error fetching users'); // Show error if fetch fails
       }
@@ -113,7 +113,7 @@ const UserManagement = ({ url }) => {
       </form>
       
       <div className='user-list'>
-        {users.length > 0 ? ( // Check if users exist
+        {Array.isArray(users) && users.length > 0 ? ( // Check if users exist
           users.map((user) => (
             <div key={user._id} className='user-item'>
               <p>{user.name} - {user.email} ({user.role})</p>
