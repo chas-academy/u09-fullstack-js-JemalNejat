@@ -7,7 +7,7 @@ const AdminDashboard = () => {
   return (
     <div>
         <h1>Admin Dashboard</h1>
-        <p>Under construction...</p>
+        <p>Under construction test.</p>
     </div>
   )
 }
