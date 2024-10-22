@@ -1,6 +1,6 @@
 import express from "express"
 import { loginUser,registerUser,loginAdmin } from "../controllers/userController.js";
- import { addUser, updateUser, deleteUser, fetchAllUsers } from "../controllers/userController.js";
+ import { addUser, updateUser, deleteUser, fetchAllUsers } from "../controllers/adminController.js";
 
 const userRouter = express.Router()
 
