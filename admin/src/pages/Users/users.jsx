@@ -6,7 +6,7 @@ import './users.css';
 import { toast } from "react-toastify";
 import axios from "axios";
  
-import { assets as frontendAssets } from '../../assets/frontend/src/assets/frontend_assets/assets.js';
+
 
 
 const Users = ({ url }) => {
@@ -139,7 +139,10 @@ const Users = ({ url }) => {
       <div className='user-list'>
         {users.map((user, index) => (
           <div key={index} className='user-item'>
-             <img src={frontendAssets.profile_icon} alt="" />
+
+
+
+           
             <div>
               <p className='user-item-name'>{user.firstName} {user.lastName}</p>
               <div className="user-item-address">
