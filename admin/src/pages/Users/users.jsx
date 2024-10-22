@@ -25,7 +25,7 @@ const Users = ({ url }) => {
 
   // Fetch all users
   const fetchAllUsers = async () => {
-    const response = await axios.get(url + "/api/user/list");
+    const response = await axios.get(url + "/api/users/list");
     if (response.data.success) {
       setUsers(response.data.data);
     } else {
@@ -35,7 +35,7 @@ const Users = ({ url }) => {
 
   // Add new user
   const addUserHandler = async () => {
-    const response = await axios.post(url + "/api/user/create", newUser);
+    const response = await axios.post(url + "/api/users/create", newUser);
     if (response.data.success) {
       toast.success("User added successfully");
       setNewUser({
@@ -56,7 +56,7 @@ const Users = ({ url }) => {
 
   // Edit user
   const updateUserHandler = async (userId) => {
-    const response = await axios.put(url + `/api/user/update/${userId}`, editingUser);
+    const response = await axios.put(url + `/api/users/update/${userId}`, editingUser);
     if (response.data.success) {
       toast.success("User updated successfully");
       setEditingUser(null); // Reset editing mode
@@ -68,7 +68,7 @@ const Users = ({ url }) => {
 
   // Delete user
   const deleteUserHandler = async (userId) => {
-    const response = await axios.delete(url + `/api/user/delete/${userId}`);
+    const response = await axios.delete(url + `/api/users/delete/${userId}`);
     if (response.data.success) {
       toast.success("User deleted successfully");
       fetchAllUsers(); // Refresh user list
