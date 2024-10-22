@@ -13,15 +13,15 @@ const UserManagement = ({ url }) => {
   // Function to fetch all users
   const fetchAllUsers = async () => {
     try {
-      const response = await axios.get(`${url}/api/user/list`); // Fetching users from API
-      if (response.data.success) {
+      const response = await axios.get(`${url}/api/user/list`);
+      if (response.data && response.data.success) {
         setUsers(response.data.data || []); // Ensure users is an array
       } else {
-        toast.error('Error fetching users'); // Show error if fetch fails
+        toast.error('Error fetching users');
       }
     } catch (error) {
-      console.error('Fetch Error:', error); // Log the error for debugging
-      toast.error('Error fetching users'); // Notify user of the error
+      console.error('Error fetching users:', error); // Log error
+      toast.error('Error fetching users');
     }
   };
 
@@ -35,16 +35,23 @@ const UserManagement = ({ url }) => {
     event.preventDefault(); // Prevent default form submission
 
     if (!name || !email) {
-      toast.error('Please fill all fields');
+      toast.error('Please fill out both name and email.');
       return;
     }
 
     try {
-      const response = currentUserId
-        ? await axios.put(`${url}/api/user/update/${currentUserId}`, { name, email, role })
-        : await axios.post(`${url}/api/user/add`, { name, email, role });
+      const userPayload = { name, email, role };
 
-      if (response.data.success) {
+      let response;
+      if (currentUserId) {
+        // Update user if currentUserId exists
+        response = await axios.put(`${url}/api/user/update/${currentUserId}`, userPayload);
+      } else {
+        // Add new user if no currentUserId
+        response = await axios.post(`${url}/api/user/add`, userPayload);
+      }
+
+      if (response.data && response.data.success) {
         toast.success(currentUserId ? 'User updated successfully' : 'User added successfully');
         fetchAllUsers(); // Refresh the user list after submission
         resetForm(); // Reset form fields
@@ -52,7 +59,7 @@ const UserManagement = ({ url }) => {
         toast.error('Error adding/updating user');
       }
     } catch (error) {
-      console.error('Submit Error:', error); // Log the error for debugging
+      console.error('Error adding/updating user:', error); // Log error
       toast.error('Error adding/updating user');
     }
   };
@@ -67,16 +74,19 @@ const UserManagement = ({ url }) => {
 
   // Function to handle user deletion
   const handleDelete = async (userId) => {
+    if (!userId) return;
+
     try {
       const response = await axios.delete(`${url}/api/user/delete`, { data: { _id: userId } });
-      if (response.data.success) {
-        toast.success('User deleted successfully'); // Notify deletion success
+
+      if (response.data && response.data.success) {
+        toast.success('User deleted successfully');
         fetchAllUsers(); // Refresh the user list
       } else {
-        toast.error('Error deleting user'); // Notify error
+        toast.error('Error deleting user');
       }
     } catch (error) {
-      console.error('Delete Error:', error); // Log the error for debugging
+      console.error('Error deleting user:', error); // Log error
       toast.error('Error deleting user');
     }
   };
@@ -116,7 +126,7 @@ const UserManagement = ({ url }) => {
       </form>
 
       <div className="user-list">
-        {users.length > 0 ? ( // Check if users exist
+        {users.length > 0 ? (
           users.map((user) => (
             <div key={user._id} className="user-item">
               <p>{user.name} - {user.email} ({user.role})</p>
