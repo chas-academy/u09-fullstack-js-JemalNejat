@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import './AdminDashboard.css';
-import { assets } from '../../assets/assets';
+import { assets } from '../../assets/frontend_assets/assets'
 import { NavLink } from 'react-router-dom';
 
 // Navbar Component
