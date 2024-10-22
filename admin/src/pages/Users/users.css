@@ -1,1 +1,32 @@
 
+.user-item {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    align-items: start;
+    gap: 30px;
+    border: 1px solid tomato;
+    padding: 20px;
+    margin: 30px 0px;
+    font-size: 14px;
+    color: #505050;
+}
+.user-item-name {
+    font-weight: 600;
+}
+.user-item-address {
+    margin-bottom: 10px;
+}
+.user-form input, .edit-user-form input {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+.user-form button, .edit-user-form button {
+    background-color: tomato;
+    color: white;
+    padding: 8px;
+    border: none;
+    cursor: pointer;
+}
+.user-form button:hover, .edit-user-form button:hover {
+    background-color: #ff6347;
+}
