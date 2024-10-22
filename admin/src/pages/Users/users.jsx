@@ -1,4 +1,3 @@
-
 /* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
@@ -6,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import './Users.css';
 import { toast } from "react-toastify";
 import axios from "axios";
+import { assets } from '../../assets/assets'; // Assuming you have a user icon in the assets
 
 const Users = ({ url }) => {
   const [users, setUsers] = useState([]);
@@ -137,6 +137,7 @@ const Users = ({ url }) => {
       <div className='user-list'>
         {users.map((user, index) => (
           <div key={index} className='user-item'>
+            <img src={assets.user_icon} alt='User Avatar' /> {/* Added user icon */}
             <div>
               <p className='user-item-name'>{user.firstName} {user.lastName}</p>
               <div className="user-item-address">
@@ -173,4 +174,8 @@ const Users = ({ url }) => {
           </div>
         ))}
       </div>
-    </div
+    </div>
+  );
+};
+
+export default Users;
