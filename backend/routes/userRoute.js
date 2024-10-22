@@ -8,16 +8,16 @@ userRouter.post("/register",registerUser)
 userRouter.post("/login",loginUser)
 userRouter.post("/login/admin", loginAdmin); 
  // Fetch all users
-   router.get('/list', fetchAllUsers); // Add this line to fetch users
+   userRouter.get('/list', fetchAllUsers); // Add this line to fetch users
 
    // Add user
-   router.post('/add', addUser);
+   userRouter.post('/add', addUser);
 
    // Update user
-   router.put('/update/:id', updateUser);
+   userRouter.put('/update/:id', updateUser);
 
    // Delete user
-   router.delete('/delete', deleteUser);
+   userRouter.delete('/delete', deleteUser);
 
 export default userRouter;
 
