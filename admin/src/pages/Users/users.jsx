@@ -5,7 +5,8 @@ import React, { useEffect, useState } from 'react';
 import './users.css';
 import { toast } from "react-toastify";
 import axios from "axios";
-import { assets } from '../../assets/assets'; // Assuming you have a user icon in the assets
+ 
+import { assets as frontendAssets } from '../../assets/frontend_assets/assets'
 
 const Users = ({ url }) => {
   const [users, setUsers] = useState([]);
@@ -137,7 +138,7 @@ const Users = ({ url }) => {
       <div className='user-list'>
         {users.map((user, index) => (
           <div key={index} className='user-item'>
-            <img src={assets.user_icon} alt='User Avatar' /> {/* Added user icon */}
+             <img src={frontendAssets.profile_icon} alt="" />
             <div>
               <p className='user-item-name'>{user.firstName} {user.lastName}</p>
               <div className="user-item-address">
