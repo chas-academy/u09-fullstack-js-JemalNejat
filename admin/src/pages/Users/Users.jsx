@@ -1,8 +1,5 @@
-/* eslint-disable no-undef */
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
-import './Users.css'; 
+import './Users.css';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 
@@ -23,19 +20,25 @@ const UserManagement = ({ url }) => {
         toast.error('Error fetching users'); // Show error if fetch fails
       }
     } catch (error) {
-      console.error(error); // Log the error for debugging
+      console.error('Fetch Error:', error); // Log the error for debugging
       toast.error('Error fetching users'); // Notify user of the error
     }
   };
 
+  // Fetch users on component mount
   useEffect(() => {
-  fetchAllUsers(); // Call the function to fetch users when the component mounts
-}, []);
+    fetchAllUsers(); // Call the function to fetch users when the component mounts
+  }, []);
 
-
-  // Function to handle form submission
+  // Function to handle form submission for adding or updating user
   const handleSubmit = async (event) => {
     event.preventDefault(); // Prevent default form submission
+
+    if (!name || !email) {
+      toast.error('Please fill all fields');
+      return;
+    }
+
     try {
       const response = currentUserId
         ? await axios.put(`${url}/api/user/update/${currentUserId}`, { name, email, role })
@@ -46,11 +49,11 @@ const UserManagement = ({ url }) => {
         fetchAllUsers(); // Refresh the user list after submission
         resetForm(); // Reset form fields
       } else {
-        toast.error('Error adding/updating user'); // Notify error
+        toast.error('Error adding/updating user');
       }
     } catch (error) {
-      console.error(error); // Log the error for debugging
-      toast.error('Error adding/updating user'); // Notify user of the error
+      console.error('Submit Error:', error); // Log the error for debugging
+      toast.error('Error adding/updating user');
     }
   };
 
@@ -73,8 +76,8 @@ const UserManagement = ({ url }) => {
         toast.error('Error deleting user'); // Notify error
       }
     } catch (error) {
-      console.error(error); // Log the error for debugging
-      toast.error('Error deleting user'); // Notify user of the error
+      console.error('Delete Error:', error); // Log the error for debugging
+      toast.error('Error deleting user');
     }
   };
 
@@ -86,48 +89,43 @@ const UserManagement = ({ url }) => {
     setCurrentUserId(null); // Clear current user ID
   };
 
-  // Fetch users on component mount
-  useEffect(() => {
-    fetchAllUsers(); // Call fetch function on mount
-  }, []);
-
   return (
-    <div className='user-management'>
+    <div className="user-management">
       <h3>User Management</h3>
       <form onSubmit={handleSubmit}>
         <input
-          type='text'
-          placeholder='Name'
+          type="text"
+          placeholder="Name"
           value={name}
           onChange={(e) => setName(e.target.value)} // Update name state on change
           required
         />
         <input
-          type='email'
-          placeholder='Email'
+          type="email"
+          placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)} // Update email state on change
           required
         />
-        <select value={role} onChange={(e) => setRole(e.target.value)}> // Update role state on change
+        <select value={role} onChange={(e) => setRole(e.target.value)}> 
           <option value="user">User</option>
           <option value="admin">Admin</option>
         </select>
-        <button type='submit'>{currentUserId ? 'Update User' : 'Add User'}</button>
-        {currentUserId && <button type='button' onClick={resetForm}>Cancel</button>} 
+        <button type="submit">{currentUserId ? 'Update User' : 'Add User'}</button>
+        {currentUserId && <button type="button" onClick={resetForm}>Cancel</button>}
       </form>
-      
-      <div className='user-list'>
-        {Array.isArray(users) && users.length > 0 ? ( // Check if users exist
+
+      <div className="user-list">
+        {users.length > 0 ? ( // Check if users exist
           users.map((user) => (
-            <div key={user._id} className='user-item'>
+            <div key={user._id} className="user-item">
               <p>{user.name} - {user.email} ({user.role})</p>
               <button onClick={() => handleEdit(user)}>Edit</button>
               <button onClick={() => handleDelete(user._id)}>Delete</button>
             </div>
           ))
         ) : (
-          <p>No users found</p> 
+          <p>No users found</p>
         )}
       </div>
     </div>
