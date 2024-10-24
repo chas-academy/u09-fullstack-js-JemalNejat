@@ -32,7 +32,7 @@ const Navbar = () => {
       <img className='logo' src={assets.mylogo} alt="" />
       <h2>Admin Panel</h2>
       <img className='profile' src={assets.nejat} alt="" />
-       <hr/>
+      
     </div>
   );
 }
