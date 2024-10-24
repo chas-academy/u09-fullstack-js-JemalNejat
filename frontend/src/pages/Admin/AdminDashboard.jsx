@@ -16,7 +16,7 @@ const Navbar = () => {
 };
 
 // Sidebar Component
- const Sidebar = () => {
+export const Sidebar = () => {
   return (
     <div className='sidebar'>
       <div className='sidebar-options'>
@@ -61,4 +61,4 @@ const AdminDashboard = () => {
   );
 };
 
-export default { AdminDashboard,Sidebar };
+export default AdminDashboard;
