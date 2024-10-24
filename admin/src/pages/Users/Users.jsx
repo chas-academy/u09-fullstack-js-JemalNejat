@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './Users.css';
 import { toast } from 'react-toastify';
 import axios from 'axios';
+import { StoreContext } from '../../context/StoreContext';
 
-const UserManagement = ({ url }) => {
+const UserManagement = () => {
+  const { token, url } = useContext(StoreContext);
   const [users, setUsers] = useState([]);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -12,9 +14,14 @@ const UserManagement = ({ url }) => {
 
   const fetchAllUsers = async () => {
     try {
-      const response = await axios.get(`${url}/api/user/list`);
+      const response = await axios.get(`${url}/api/admin/users`, {headers: {token}});
+
+      console.log("Users response", response);
+
       if (response.data && response.data.success) {
-        setUsers(response.data.data || []);
+        console.log("Users response data", response.data.users);
+
+        setUsers(response.data.users || []);
       } else {
         toast.error('Error fetching users');
       }
@@ -42,10 +49,10 @@ const UserManagement = ({ url }) => {
       let response;
       if (currentUserId) {
         // Update existing user
-        response = await axios.put(`${url}/api/user/update/${currentUserId}`, userPayload);
+        response = await axios.put(`${url}/api/admin/users/${currentUserId}`, userPayload, {headers:{token}});
       } else {
         // Add new user
-        response = await axios.post(`${url}/api/user/add`, userPayload);
+        response = await axios.post(`${url}/api/admin/users`, userPayload, {headers:{token}});
       }
 
       if (response.data && response.data.success) {
@@ -72,7 +79,7 @@ const UserManagement = ({ url }) => {
     if (!userId) return;
 
     try {
-      const response = await axios.delete(`${url}/api/user/delete`, { data: { _id: userId } });
+      const response = await axios.delete(`${url}/api/admin/users/${userId}`, {headers:{token}});
       if (response.data && response.data.success) {
         toast.success('User deleted successfully');
         fetchAllUsers(); // Refresh the user list
