@@ -16,7 +16,7 @@ const Navbar = () => {
 };
 
 // Sidebar Component
-export const Sidebar = () => {
+ const Sidebar = () => {
   return (
     <div className='sidebar'>
       <div className='sidebar-options'>
