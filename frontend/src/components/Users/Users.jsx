@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 import { StoreContext } from '../../context/StoreContext';
 
-const UserManagement = ({url}) => {
+const UserManagement = () => {
   const { token, url } = useContext(StoreContext);
   const [users, setUsers] = useState([]);
   const [name, setName] = useState('');
