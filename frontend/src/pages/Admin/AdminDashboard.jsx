@@ -20,7 +20,9 @@ export default AdminDashboard */
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import './AdminDashboard.css'; // Updated CSS file
-import { assets } from '../../assets/assets';
+
+import { assets } from '../../assets/admin_assets/assets';
+
 import { NavLink } from 'react-router-dom';
 
 // Navbar Component
