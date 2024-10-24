@@ -3,8 +3,8 @@ import './Users.css';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 
-//import { StoreContext } from '../../../context/StoreContext';
-import { StoreContext } from '../../../frontend/src/context/StoreContext';
+import StoreContext from '@frontend/context/StoreContext';
+
 
 
 
