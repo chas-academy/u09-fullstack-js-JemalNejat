@@ -12,9 +12,9 @@ import LoginPopup from "./components/LoginPopup/LoginPopup";
 import Verify from "./pages/verify/Verify";
 import MyOrders from "./pages/MyOrders/MyOrders";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
-//import Add from './components/Add/Add'; 
+
 import List from './components/List/List'; 
-//import Orders from './components/Orders/Orders'; 
+ 
 import Users from './components/Users/Users'; 
 
 
