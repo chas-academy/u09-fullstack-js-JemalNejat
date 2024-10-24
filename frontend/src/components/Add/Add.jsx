@@ -5,7 +5,7 @@ import './Add.css'
 import { assets } from '../../assets/admin_assets/assets';
 import axios from "axios"
 import { toast } from 'react-toastify'
-import { Sidebar } from '../../pages/Admin/AdminDashboard';  
+import { Sidebar } from '../pages/Admin/AdminDashboard';  
  
 
 const Add = ({url}) => {
