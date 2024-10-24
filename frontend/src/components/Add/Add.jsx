@@ -5,6 +5,7 @@ import './Add.css'
 import { assets } from '../../assets/admin_assets/assets';
 import axios from "axios"
 import { toast } from 'react-toastify'
+import { Sidebar } from '../../pages/Admin/AdminDashboard';  
  
 
 const Add = ({url}) => {
@@ -55,6 +56,12 @@ const Add = ({url}) => {
   //},[data])
   
   return (
+       <div className='admin-dashboard'>  
+      <Sidebar />  
+
+      <div className="dashboard-content">  
+        <div className="app-content add">  
+
     <div className='add'>
           
       <form className='flex-col' onSubmit={onSubmitHandler}>
@@ -102,6 +109,9 @@ const Add = ({url}) => {
       </form>
       
     </div>
+          </div>
+        </div>
+         </div>
   )
 }
 
