@@ -11,7 +11,7 @@ import Footer from "./components/Footer/Footer";
 import LoginPopup from "./components/LoginPopup/LoginPopup";
 import Verify from "./pages/verify/Verify";
 import MyOrders from "./pages/MyOrders/MyOrders";
-import AdminDashboard from "./components/admin/AdminDashboard";
+import AdminDashboard from "./pages/Admin/AdminDashboard";
 
 const App = () => {
   const [showLogin,setShowLogin] = useState(false)

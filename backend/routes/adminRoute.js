@@ -1,13 +1,14 @@
-import express from "express"
-import { addUser, updateUser, deleteUser } from "../controllers/adminController.js"
+import express from "express";
+import { addUser, updateUser, deleteUser, fetchAllUsers } from "../controllers/adminController.js";
  
 import adminMiddleware from "../middleware/admin.js"; 
 import authMiddleware from '../middleware/auth.js';
 
-const adminRouter = express.Router()
+const adminRouter = express.Router();
 
-adminRouter.post("/users/add", [authMiddleware, adminMiddleware], addUser)
-adminRouter.put("/users/update", [authMiddleware, adminMiddleware], updateUser)
-adminRouter.delete("/users/delete", [authMiddleware, adminMiddleware], deleteUser)
+adminRouter.get("/users", [authMiddleware, adminMiddleware], fetchAllUsers);
+adminRouter.post("/users", [authMiddleware, adminMiddleware], addUser);
+adminRouter.put("/users/:id", [authMiddleware, adminMiddleware], updateUser);
+adminRouter.delete("/users/:id", [authMiddleware, adminMiddleware], deleteUser);
 
 export default adminRouter;
