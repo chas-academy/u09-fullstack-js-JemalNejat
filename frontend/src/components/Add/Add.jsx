@@ -56,10 +56,6 @@ const Add = ({url}) => {
   //},[data])
   
   return (
-        
-      
-
-       
         <div className="app-content"> 
      <Sidebar />  
 
@@ -111,8 +107,7 @@ const Add = ({url}) => {
       
     </div>
           </div>
-        </div>
-         </div>
+        
   )
 }
 
