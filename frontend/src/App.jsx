@@ -12,9 +12,9 @@ import LoginPopup from "./components/LoginPopup/LoginPopup";
 import Verify from "./pages/verify/Verify";
 import MyOrders from "./pages/MyOrders/MyOrders";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
-import Add from './components/Add/Add'; 
-import List from './components/List/List'; 
-import Orders from './components/Orders/Orders'; 
+//import Add from './components/Add/Add'; 
+//import List from './components/List/List'; 
+//import Orders from './components/Orders/Orders'; 
 import Users from './components/Users/Users'; 
 
 
@@ -33,9 +33,7 @@ const App = () => {
           <Route path="/verify" element={<Verify />} />
           <Route path="/myorders" element={<MyOrders />} />
           <Route path="/dashboard" element={<AdminDashboard />} />
-           <Route path="/add" element={<Add url={url}/>}/>
-          <Route path="/list" element={<List url={url}/>}/>
-          <Route path="/orders" element={<Orders url={url}/>}/>
+         
           <Route path="/users" element={<Users />} /> 
         </Routes>
         <Footer />
