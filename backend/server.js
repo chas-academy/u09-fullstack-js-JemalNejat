@@ -7,7 +7,7 @@ import userRouter from "./routes/userRoute.js"
 import cartRouter from "./routes/cartRoute.js"
 import orderRouter from "./routes/orderRoute.js"
 import listRouter from "./routes/listRoute.js"
-import addRouter from "./routes/addRoute.js"
+
 
 import 'dotenv/config'
 
@@ -30,7 +30,7 @@ app.use("/api/cart",cartRouter)
 app.use("/api/order",orderRouter)
 app.use("/api/admin",adminRouter)
 app.use("/api/list",listRouter)
-app.use("/api/add",addRouter)
+
 
 app.get("/",(req,res)=>{
     res.send("API Working")
