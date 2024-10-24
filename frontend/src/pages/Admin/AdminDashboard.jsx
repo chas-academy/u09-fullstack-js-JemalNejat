@@ -8,7 +8,7 @@ import { NavLink } from 'react-router-dom';
 const Navbar = () => {
   return (
     <div className='navbar'>
-      <img className='logo' src={assets.mylogo} alt="Logo" />
+      
       <h2>Admin Panel</h2>
      
     </div>
@@ -26,7 +26,7 @@ const Sidebar = () => {
         </NavLink>
 
         <NavLink to='/list' className='sidebar-option'>
-          <img src={assets.list_icon} alt="List Icon" />
+          <img src={assets.order_icon} alt="List Icon" />
           <p>List Items</p>
         </NavLink>
 
