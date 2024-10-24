@@ -36,7 +36,7 @@ const Navbar = () => {
   );
 }
  <hr/>
-      <div className='app-content'> 
+      
 
 // Sidebar Component
 const Sidebar = () => {
