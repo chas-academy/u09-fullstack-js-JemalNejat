@@ -14,7 +14,7 @@ import MyOrders from "./pages/MyOrders/MyOrders";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
 import Add from './components/Add/Add'; 
 import List from './components/List/List'; 
-
+import List from './components/Orders/Orders'; 
 import Users from './components/Users/Users'; 
 
 
@@ -35,6 +35,7 @@ const App = () => {
           <Route path="/dashboard" element={<AdminDashboard />} />
            <Route path="/add" element={<Add />}/>
            <Route path="/list" element={<List />}/>
+          <Route path="/orders" element={<Orders />}/>
           <Route path="/users" element={<Users />} /> 
         </Routes>
         <Footer />
