@@ -5,7 +5,7 @@ import './Add.css'
 import { assets } from '../../assets/admin_assets/assets';
 import axios from "axios"
 import { toast } from 'react-toastify'
-import { Sidebar } from '../../pages/Admin/AdminDashboard';  
+ 
 
 const Add = ({url}) => {
   
@@ -56,7 +56,7 @@ const Add = ({url}) => {
   
   return (
     <div className='add'>
-            <Sidebar />
+          
       <form className='flex-col' onSubmit={onSubmitHandler}>
  
         <div className='add-image-upload flex-col'>
