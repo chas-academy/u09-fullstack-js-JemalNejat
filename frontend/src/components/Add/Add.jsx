@@ -56,11 +56,12 @@ const Add = ({url}) => {
   //},[data])
   
   return (
-       <div className='admin-dashboard'>  
-      <Sidebar />  
+        
+      
 
-      <div className="dashboard-content">  
-        <div className="app-content add">  
+       
+        <div className="app-content"> 
+     <Sidebar />  
 
     <div className='add'>
           
