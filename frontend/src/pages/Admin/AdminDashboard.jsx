@@ -49,6 +49,7 @@ const AdminDashboard = () => {
   return (
     <div className="admin-dashboard">
       <Navbar />
+      <hr/>
       <div className="dashboard-content">
         <Sidebar />
         
