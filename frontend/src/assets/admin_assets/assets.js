@@ -6,7 +6,7 @@ import upload_area from './upload_area.png'
 import parcel_icon from './parcel_icon.png'
 import profile_icon from './profile_icon.png'
 
-import nejat from './nejat.jpg'
+
 
 export const url = "https://u09-fullstack-js-jemalnejat-backend.onrender.com";
 
@@ -18,7 +18,7 @@ export const assets ={
     upload_area,
     parcel_icon,
     profile_icon,
-    nejat
+   
 }
 
 
