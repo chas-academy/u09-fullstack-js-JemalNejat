@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
 import './Add.css'
-import { assets } from '../../assets/assets'
+import { assets } from '../../assets/admin_assets/assets'
 import axios from "axios"
 import { toast } from 'react-toastify'
 
