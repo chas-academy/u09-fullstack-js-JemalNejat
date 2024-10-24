@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react'
 import './List.css'
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { assets } from '../../assets/admin_assets/assets';
+
 
 const List = ({url}) => {
   
