@@ -10,7 +10,7 @@ const Navbar = () => {
     <div className='navbar'>
       <img className='logo' src={assets.mylogo} alt="Logo" />
       <h2>Admin Panel</h2>
-      <img className='profile' src={assets.nejat} alt="Profile" />
+     
     </div>
   );
 };
