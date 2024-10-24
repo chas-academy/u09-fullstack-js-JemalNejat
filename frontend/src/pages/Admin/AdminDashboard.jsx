@@ -32,10 +32,11 @@ const Navbar = () => {
       <img className='logo' src={assets.mylogo} alt="" />
       <h2>Admin Panel</h2>
       <img className='profile' src={assets.nejat} alt="" />
+       <hr/>
     </div>
   );
 }
- <hr/>
+
       
 
 // Sidebar Component
@@ -67,16 +68,7 @@ const Sidebar = () => {
   );
 }
 
-// AdminDashboard Component combining Navbar and Sidebar
-const AdminDashboard = () => {
-  return (
-    <div className='admin-dashboard'>
-      <Navbar />
-      <Sidebar />
-      {/* You can add more content here if needed */}
-    </div>
-  );
-}
+
 
 export default AdminDashboard;
 
