@@ -19,7 +19,7 @@ const Navbar = ({ setShowLogin, setSearchQuery }) => {
 
   useEffect(() => {
     setAdmin(isUserAdmin())
-  });
+  }, [token]);
 
   const logout = () => {
     localStorage.removeItem("token");

@@ -26,6 +26,7 @@ const loginUser = async (req, res) => {
 
   }
 };
+
 const createToken = (id, role) => {
     return jwt.sign({id, role},process.env.JWT_SECRET);
 }
@@ -67,47 +68,5 @@ const registerUser = async (req, res) => {
 
   }
 };
-// Admin login function
-export const loginAdmin = async (req, res) => {
-    const { email, password } = req.body; // Get the email and password from the request body
-
-    try {
-        // Find user by email
-        const user = await User.findOne({ email });
-        if (!user) {
-            return res.status(401).json({ success: false, message: "Invalid credentials." });
-        }
-
-        // Check if the password matches
-        const isMatch = await user.comparePassword(password);
-        if (!isMatch) {
-            return res.status(401).json({ success: false, message: "Invalid credentials." });
-        }
-
-        // Check if user is an admin
-        if (user.role !== 'admin') {
-            return res.status(403).json({ success: false, message: "Access denied. Not an admin." });
-        }
-
-        // Create a JWT token with user info, including role
-        const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1h' });
-
-        // Respond with token and user role
-        res.json({ success: true, token, role: user.role });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ success: false, message: "Server error." });
-    }
-};
-
-
-
-
-
-
-  
-
-
-
 
 export { loginUser, registerUser };

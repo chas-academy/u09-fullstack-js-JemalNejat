@@ -27,7 +27,7 @@ function Cart() {
           if (cartItems[item._id] > 0) {
             return (
               // eslint-disable-next-line react/jsx-key
-              <div>
+              <div key={index}>
                 <div className="cart-items-title cart-items-item">
                   <img src={url+"/images/"+item.image} alt="" />
                   <p>{item.name}</p>
