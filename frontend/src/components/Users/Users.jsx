@@ -142,6 +142,7 @@ const UserManagement = () => {
         )}
       </div>
     </div>
+      </div>
   );
 };
 
