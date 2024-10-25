@@ -2,7 +2,8 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
 import Navbar from "./components/Navbar/Navbar";
-import { Route, Routes } from "react-router-dom"; import 'react-toastify/dist/ReactToastify.css';
+import { Route, Routes } from "react-router-dom"; 
+import 'react-toastify/dist/ReactToastify.css';
 import Home from "./pages/Home/Home";
 import Cart from "./pages/Cart/Cart";
 import PlaceOrder from "./pages/PlaceOrder/PlaceOrder";
