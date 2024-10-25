@@ -3,6 +3,7 @@ import './Users.css';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import { StoreContext } from '../../context/StoreContext';
+import { Sidebar } from '../../pages/Admin/AdminDashboard';  
 
 const UserManagement = () => {
   const { token, url } = useContext(StoreContext);
@@ -100,7 +101,9 @@ const UserManagement = () => {
   };
 
   return (
-    <div className="user-management">
+   <div className="app-content"> 
+     <Sidebar /> 
+   <div className="user-management">
       <h3>User Management</h3>
       <form onSubmit={handleSubmit}>
         <input
