@@ -26,10 +26,11 @@ const App = () => {
 
   return (
     <>
-    {showLogin?<LoginPopup setShowLogin={setShowLogin}/>:<></>}
-      <div className="app">
+      <div>
          <ToastContainer/>
-        <Navbar setShowLogin={setShowLogin}/>
+     {showLogin?<LoginPopup setShowLogin={setShowLogin}/>:<></>}
+      <div className="app">
+          <Navbar setShowLogin={setShowLogin}/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
@@ -44,6 +45,7 @@ const App = () => {
         </Routes>
         <Footer />
       </div>
+         </div>
     </>
   );
 };
