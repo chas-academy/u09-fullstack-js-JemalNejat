@@ -37,8 +37,9 @@ const List = ({url}) => {
  })
   
   return (
-    <hr />
+   
       <div className="app-content"> 
+         <hr />
          <Sidebar /> 
      <div className='list add flex-col'>
       <p>All Foods List</p>
