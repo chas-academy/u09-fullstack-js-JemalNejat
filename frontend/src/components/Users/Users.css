@@ -38,7 +38,7 @@ hr {
 }
 
 .user-management {
- 
+     padding: 5px;
   font-size: 12px; /* Reduced font size */
   color: #505050;
 }
