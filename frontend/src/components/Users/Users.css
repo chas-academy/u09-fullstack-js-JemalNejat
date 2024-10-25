@@ -1,5 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Outfit;
+}
 
+body {
+  min-height: 100vh;
+  background-color: #fcfcfc;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background-color: #a9a9a9;
+}
+
+.app-content {
+  display: flex;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+/* Updated user-management styles */
 .user-management {
   padding: 30px;
   font-size: 14px;
@@ -10,30 +48,22 @@
   margin-bottom: 20px;
 }
 
+/* Updated user-item styles to align with order-item */
 .user-item {
   display: grid;
-  grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr;
+  grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr; /* Match grid columns */
   align-items: start;
   gap: 30px;
   border: 1px solid tomato;
   padding: 20px;
-  margin: 30px 0;
+  margin: 30px 0px;
   font-size: 14px;
   color: #505050;
 }
 
-.user-item-name,
-.user-item-detail {
-  font-weight: 600;
-}
-
-.user-item-name {
-  margin-top: 30px;
-  margin-bottom: 5px;
-}
-
-.user-item-address {
-  margin-bottom: 10px;
+.user-item p {
+  font-weight: 600; /* Match font-weight in order-item */
+  margin: 0;
 }
 
 .user-item select {
@@ -44,10 +74,20 @@
   outline: none;
 }
 
-.user-list {
-  margin-top: 20px;
+/* Button styling for edit/delete to match order-item layout */
+.user-item button {
+  background-color: tomato;
+  color: white;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
 }
 
+.user-item button:hover {
+  background-color: darkred;
+}
+
+/* Form styling */
 .user-management form {
   margin-bottom: 20px;
   display: flex;
@@ -62,6 +102,7 @@
   border-radius: 4px;
 }
 
+/* Consistent button styles in the form */
 .user-management button {
   background-color: tomato;
   color: white;
@@ -85,7 +126,7 @@
     padding: 5px;
     font-size: 12px;
   }
-  
+
   .user-item img {
     width: 40px;
   }
