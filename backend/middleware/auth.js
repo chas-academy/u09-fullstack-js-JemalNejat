@@ -1,8 +1,8 @@
 import jwt from "jsonwebtoken";
 
 const authMiddleware = async (req, res, next) => {
-  const authHeader = req.headers.authorization; // Correctly get the authorization header
-  const token = authHeader && authHeader.split(' ')[1]; // Extract the token from Bearer format
+  const authHeader = req.headers.authorization;
+  const token = authHeader && authHeader.split(" ")[1];
 
   if (!token) {
     return res.status(401).send("Not authenticated, login again!");
@@ -10,14 +10,11 @@ const authMiddleware = async (req, res, next) => {
 
   try {
     const token_decode = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = {  // Set user information in req.user
-      id: token_decode.id,
-      role: token_decode.role,
-    };
-    next(); // Continue to the next middleware/route handler
+    req.user = { id: token_decode.id, role: token_decode.role };
+    next();
   } catch (error) {
-    console.error("JWT verification error:", error.message);  // Log error for debugging
-    res.status(401).send("Unauthorized");  // Send a 401 response
+    console.error("JWT verification error:", error.message);
+    res.status(401).send("Unauthorized");
   }
 };
 
