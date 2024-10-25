@@ -4,7 +4,9 @@ import React, { useEffect, useState } from 'react'
 import './List.css'
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import { Sidebar } from '../../pages/Admin/AdminDashboard';  
+import { Sidebar } from '../../pages/Admin/AdminDashboard'; 
+import { Navbar } from '../../pages/Admin/AdminDashboard'; 
+ 
 
 const List = ({url}) => {
   
@@ -37,7 +39,9 @@ const List = ({url}) => {
  })
   
   return (
-   
+     <div className="admin-dashboard">
+      <Navbar />
+      <hr/>
       <div className="app-content"> 
          <hr />
          <Sidebar /> 
