@@ -13,9 +13,9 @@ import { UserProvider } from './context/UserContext.jsx';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
    <StoreContextProvider>
-     <UserProvider>
+   <UserProvider>
    <App />
-       </UserProvider>
+   </UserProvider>
    </StoreContextProvider>
   </BrowserRouter>
    
