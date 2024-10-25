@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 import { StoreContext } from '../../context/StoreContext';
 import { Sidebar } from '../../pages/Admin/AdminDashboard';  
+import { Sidebar } from '../../pages/Admin/AdminDashboard'; 
 
 const UserManagement = () => {
   const { token, url } = useContext(StoreContext);
@@ -101,6 +102,9 @@ const UserManagement = () => {
   };
 
   return (
+    <div className="admin-dashboard">
+      <Navbar />
+      <hr/>
   <div className="app-content"> 
        <hr />
      <Sidebar /> 
