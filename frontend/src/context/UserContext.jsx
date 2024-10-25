@@ -90,4 +90,4 @@
      );
    };
 
-   export const useUserContext = () => useContext(UserContext);
+export default UserContext
