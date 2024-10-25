@@ -43,6 +43,7 @@ const Order = ({url}) => {
   },[])
 
   return (
+    <hr />
      <div className="app-content"> 
        <Sidebar /> 
      <div className='order add'>
