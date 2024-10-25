@@ -80,7 +80,7 @@ const Order = ({url}) => {
         ))}
 
       </div>
-     
+      </div>
     </div>
   ) 
 }
