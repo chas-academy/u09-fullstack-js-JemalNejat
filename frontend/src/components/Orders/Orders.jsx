@@ -8,6 +8,8 @@ import {toast} from "react-toastify"
 import axios from "axios"
 import { assets } from '../../assets/admin_assets/assets';
 import { Sidebar } from '../../pages/Admin/AdminDashboard';  
+import { Navbar } from '../../pages/Admin/AdminDashboard'; 
+ 
 
 
 const Order = ({url}) => {
@@ -43,6 +45,9 @@ const Order = ({url}) => {
   },[])
 
   return (
+     <div className="admin-dashboard">
+      <Navbar />
+      <hr/>
    <div className="app-content"> 
        <hr />
        <Sidebar /> 
