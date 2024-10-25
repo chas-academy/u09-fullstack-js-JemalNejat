@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './Users.css';
 import { toast } from 'react-toastify';
 import axios from 'axios';
-import { Sidebar } from '../../pages/Admin/AdminDashboard';  
-import { Navbar } from '../../pages/Admin/AdminDashboard'; 
+import { StoreContext } from '../../context/StoreContext';
 
-const UserManagement = ({ url, token }) => {
+const UserManagement = () => {
+  const { token, url } = useContext(StoreContext);
   const [users, setUsers] = useState([]);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -14,17 +14,20 @@ const UserManagement = ({ url, token }) => {
 
   const fetchAllUsers = async () => {
     try {
-      const response = await axios.get(`${url}/api/admin/users`, {
-        headers: { token },
-      });
+      const response = await axios.get(`${url}/api/admin/users`, {headers: {token}});
 
-      if (response.data.success) {
+      console.log("Users response", response);
+
+      if (response.data && response.data.success) {
+        console.log("Users response data", response.data.users);
+
         setUsers(response.data.users || []);
       } else {
         toast.error('Error fetching users');
       }
     } catch (error) {
-      toast.error(`Error fetching users: ${error.message}`);
+      console.error('Error fetching users:', error);
+      toast.error('Error fetching users');
     }
   };
 
@@ -41,27 +44,27 @@ const UserManagement = ({ url, token }) => {
     }
 
     const userPayload = { name, email, role };
+
     try {
       let response;
       if (currentUserId) {
-        response = await axios.put(`${url}/api/admin/users/${currentUserId}`, userPayload, {
-          headers: { token },
-        });
+        // Update existing user
+        response = await axios.put(`${url}/api/admin/users/${currentUserId}`, userPayload, {headers:{token}});
       } else {
-        response = await axios.post(`${url}/api/admin/users`, userPayload, {
-          headers: { token },
-        });
+        // Add new user
+        response = await axios.post(`${url}/api/admin/users`, userPayload, {headers:{token}});
       }
 
-      if (response.data.success) {
+      if (response.data && response.data.success) {
         toast.success(currentUserId ? 'User updated successfully' : 'User added successfully');
-        fetchAllUsers();
-        resetForm();
+        fetchAllUsers(); // Refresh the user list after submission
+        resetForm(); // Reset form fields
       } else {
-        toast.error('Error adding/updating user');
+        toast.error('Error adding/updating user: ' + (response.data.message || ''));
       }
     } catch (error) {
-      toast.error(`Error adding/updating user: ${error.message}`);
+      console.error('Error adding/updating user:', error);
+      toast.error('Error adding/updating user: ' + (error.response?.data?.message || ''));
     }
   };
 
@@ -73,18 +76,19 @@ const UserManagement = ({ url, token }) => {
   };
 
   const handleDelete = async (userId) => {
+    if (!userId) return;
+
     try {
-      const response = await axios.delete(`${url}/api/admin/users/${userId}`, {
-        headers: { token },
-      });
-      if (response.data.success) {
+      const response = await axios.delete(`${url}/api/admin/users/${userId}`, {headers:{token}});
+      if (response.data && response.data.success) {
         toast.success('User deleted successfully');
-        fetchAllUsers();
+        fetchAllUsers(); // Refresh the user list
       } else {
         toast.error('Error deleting user');
       }
     } catch (error) {
-      toast.error(`Error deleting user: ${error.message}`);
+      console.error('Error deleting user:', error);
+      toast.error('Error deleting user: ' + (error.response?.data?.message || ''));
     }
   };
 
@@ -96,51 +100,43 @@ const UserManagement = ({ url, token }) => {
   };
 
   return (
-    <div className="admin-dashboard">
-      <Navbar />
-      <hr />
-      <div className="app-content"> 
-        <hr />
-        <Sidebar />
-        <div className="user-management">
-          <h3>User Management</h3>
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              placeholder="Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-            />
-            <input
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <select value={role} onChange={(e) => setRole(e.target.value)}>
-              <option value="user">User</option>
-              <option value="admin">Admin</option>
-            </select>
-            <button type="submit">{currentUserId ? 'Update User' : 'Add User'}</button>
-            {currentUserId && <button type="button" onClick={resetForm}>Cancel</button>}
-          </form>
+    <div className="user-management">
+      <h3>User Management</h3>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <select value={role} onChange={(e) => setRole(e.target.value)}>
+          <option value="user">User</option>
+          <option value="admin">Admin</option>
+        </select>
+        <button type="submit">{currentUserId ? 'Update User' : 'Add User'}</button>
+        {currentUserId && <button type="button" onClick={resetForm}>Cancel</button>}
+      </form>
 
-          <div className="user-list">
-            {users.length > 0 ? (
-              users.map((user) => (
-                <div key={user._id} className="user-item">
-                  <p>{user.name} - {user.email} ({user.role})</p>
-                  <button onClick={() => handleEdit(user)}>Edit</button>
-                  <button onClick={() => handleDelete(user._id)}>Delete</button>
-                </div>
-              ))
-            ) : (
-              <p>No users found</p>
-            )}
-          </div>
-        </div>
+      <div className="user-list">
+        {users.length > 0 ? (
+          users.map((user) => (
+            <div key={user._id} className="user-item">
+              <p>{user.name} - {user.email} ({user.role})</p>
+              <button onClick={() => handleEdit(user)}>Edit</button>
+              <button onClick={() => handleDelete(user._id)}>Delete</button>
+            </div>
+          ))
+        ) : (
+          <p>No users found</p>
+        )}
       </div>
     </div>
   );
