@@ -14,22 +14,26 @@ const UserManagement = () => {
   const [currentUserId, setCurrentUserId] = useState(null);
 
   // Fetch all users on initial render
-  const fetchAllUsers = async () => {
-    if (!token) return;
-    try {
-      const response = await axios.get(`${url}/api/admin/users`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      if (response.data.success) {
-        setUsers(response.data.users || []);
-      } else {
-        toast.error('Error fetching users');
-      }
-    } catch (error) {
-      console.error('Error fetching users:', error);
-      toast.error(error.response?.data?.message || 'Error fetching users');
-    }
-  };
+     const fetchAllUsers = async () => {
+       if (!token) {
+           toast.error('You must be logged in to view users.');
+           return;
+       }
+       try {
+           const response = await axios.get(`${url}/api/admin/users`, {
+               headers: { Authorization: `Bearer ${token}` },
+           });
+           if (response.data.success) {
+               setUsers(response.data.users || []);
+           } else {
+               toast.error('Error fetching users');
+           }
+       } catch (error) {
+           console.error('Error fetching users:', error);
+           toast.error(error.response?.data?.message || 'Error fetching users');
+       }
+   };
+
 
   useEffect(() => {
     fetchAllUsers(); // Load users when component mounts
