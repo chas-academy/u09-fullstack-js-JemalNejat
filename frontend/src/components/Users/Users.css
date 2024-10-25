@@ -1,107 +1,112 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
-*{
+
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: Outfit ;
+  font-family: Outfit;
 }
-body{
+
+body {
   min-height: 100vw;
   background-color: #fcfcfc;
 }
-a{
+
+a {
   text-decoration: none;
   color: inherit;
 }
-hr{
+
+hr {
   border: none;
   height: 1px;
   background-color: #a9a9a9;
 }
-.app-content{
+
+.app-content {
   display: flex;
 }
-.flex-col{
+
+.flex-col {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-.cursor{
-  cursor: pointer;
 
+.cursor {
+  cursor: pointer;
 }
 
 .user-management {
-    padding: 20px;
-    font-size: 14px;
-    color: #505050;
+  padding: 10px; /* Reduced padding */
+  font-size: 12px; /* Reduced font size */
+  color: #505050;
 }
 
 .user-management h3 {
-    margin-bottom: 20px;
+  margin-bottom: 15px; /* Reduced margin */
 }
 
 .user-item {
-    display: grid;
-    grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr;
-    align-items: start;
-    gap: 30px;
-    border: 1px solid tomato;
-    padding: 20px;
-    margin: 30px 0;
+  display: grid;
+  grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr;
+  align-items: start;
+  gap: 20px; /* Reduced gap */
+  border: 1px solid tomato;
+  padding: 15px; /* Reduced padding */
+  margin: 20px 0; /* Reduced margin */
 }
 
 .user-item p {
-    margin: 0; /* Reset default margins */
+  margin: 0; /* Reset default margins */
 }
 
 .user-item select {
-    background-color: #ffe8e4;
-    border: 1px solid tomato;
-    width: max(10vw, 120px);
-    padding: 10px;
-    outline: none;
+  background-color: #ffe8e4;
+  border: 1px solid tomato;
+  width: max(10vw, 100px); /* Reduced minimum width */
+  padding: 8px; /* Reduced padding */
+  outline: none;
 }
 
 .user-list {
-    margin-top: 20px;
+  margin-top: 15px; /* Reduced margin */
 }
 
 .user-management form {
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
+  margin-bottom: 15px; /* Reduced margin */
+  display: flex;
+  flex-direction: column;
 }
 
 .user-management input,
 .user-management select {
-    margin-bottom: 10px; /* Space between inputs */
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  margin-bottom: 8px; /* Reduced space between inputs */
+  padding: 8px; /* Reduced padding */
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 .user-management button {
-    background-color: tomato;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
+  background-color: tomato;
+  color: white;
+  border: none;
+  padding: 8px; /* Reduced padding */
 }
 
 .user-management button:hover {
-    background-color: darkred;
+  background-color: darkred;
 }
 
 @media (max-width: 1000px) {
-    .user-item {
-        font-size: 12px;
-        grid-template-columns: 0.5fr 2fr 1fr;
-        padding: 15px 8px;
-    }
+  .user-item {
+    font-size: 10px; /* Reduced font size for smaller screens */
+    grid-template-columns: 0.5fr 2fr 1fr;
+    padding: 12px 6px; /* Reduced padding */
+  }
 
-    .user-item select {
-        padding: 5px;
-        font-size: 12px;
-    }
+  .user-item select {
+    padding: 4px; /* Reduced padding */
+    font-size: 10px; /* Reduced font size */
+  }
 }
