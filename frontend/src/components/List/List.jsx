@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import './List.css'
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { Sidebar } from '../../pages/Admin/AdminDashboard';  
 
 const List = ({url}) => {
   
@@ -36,7 +37,9 @@ const List = ({url}) => {
  })
   
   return (
-    <div className='list add flex-col'>
+      <div className="app-content"> 
+         <Sidebar /> 
+     <div className='list add flex-col'>
       <p>All Foods List</p>
       <div className='list-table'>
         <div className='list-table-format title'>
