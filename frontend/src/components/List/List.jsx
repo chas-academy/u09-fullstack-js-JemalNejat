@@ -71,6 +71,7 @@ const List = ({url}) => {
       </div>
        </div>
     </div>
+      </div>
   )
 }
 
