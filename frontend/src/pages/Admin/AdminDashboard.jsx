@@ -5,7 +5,7 @@ import { assets } from '../../assets/admin_assets/assets';
 import { NavLink } from 'react-router-dom';
 
 // Navbar Component
-const Navbar = () => {
+export const Navbar = () => {
   return (
     <div className='navbar'>
       
