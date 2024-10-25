@@ -56,8 +56,8 @@ const Add = ({url}) => {
   //},[data])
   
   return (
-   <hr />
-        <div className="app-content"> 
+     <div className="app-content"> 
+            <hr />
      <Sidebar />  
 
     <div className='add'>
