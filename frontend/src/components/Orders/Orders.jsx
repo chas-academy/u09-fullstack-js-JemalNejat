@@ -7,6 +7,7 @@ import './Orders.css'
 import {toast} from "react-toastify"
 import axios from "axios"
 import { assets } from '../../assets/admin_assets/assets';
+import { Sidebar } from '../../pages/Admin/AdminDashboard';  
 
 
 const Order = ({url}) => {
@@ -42,7 +43,9 @@ const Order = ({url}) => {
   },[])
 
   return (
-    <div className='order add'>
+     <div className="app-content"> 
+       <Sidebar /> 
+     <div className='order add'>
       <h3>Order Page</h3>
       <div className='order-list'>
         {orders.map((order,index)=>(
