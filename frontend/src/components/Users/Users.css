@@ -50,11 +50,11 @@ hr {
 .user-item {
     display: grid;
     grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr;
-    align-items: start;
+    align-items: center;
     gap: 30px;
     border: 1px solid tomato;
     padding: 20px;
-    margin: 30px 0;
+    margin: 20px 0;
 }
 
 .user-item p {
