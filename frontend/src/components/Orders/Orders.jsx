@@ -43,8 +43,8 @@ const Order = ({url}) => {
   },[])
 
   return (
-    <hr />
-     <div className="app-content"> 
+   <div className="app-content"> 
+       <hr />
        <Sidebar /> 
      <div className='order add'>
       <h3>Order Page</h3>
