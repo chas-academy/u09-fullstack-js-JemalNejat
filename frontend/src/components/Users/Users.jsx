@@ -2,78 +2,72 @@ import React, { useContext, useEffect, useState } from 'react';
 import './Users.css';
 import { toast } from 'react-toastify';
 import axios from 'axios';
-//import { StoreContext } from '../../context/StoreContext';
-import { Sidebar } from '../../pages/Admin/AdminDashboard';  
-import { Navbar } from '../../pages/Admin/AdminDashboard'; 
+import { Sidebar, Navbar } from '../../pages/Admin/AdminDashboard';
+import { StoreContext } from '../../context/StoreContext';
 
-const UserManagement = ({ token, url }) => {
- // const { token, url } = useContext(StoreContext);
+const UserManagement = () => {
+  const { token, url } = useContext(StoreContext); // Use context for token and URL if applicable
   const [users, setUsers] = useState([]);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [role, setRole] = useState('user');
   const [currentUserId, setCurrentUserId] = useState(null);
 
+  // Fetch all users on initial render
   const fetchAllUsers = async () => {
+    if (!token) return;
     try {
       const response = await axios.get(`${url}/api/admin/users`, {
-       headers: { Authorization: `Bearer ${token}` }
-     });
-
-
-      console.log("Users response", response);
-
-      if (response.data && response.data.success) {
-        console.log("Users response data", response.data.users);
-
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (response.data.success) {
         setUsers(response.data.users || []);
       } else {
         toast.error('Error fetching users');
       }
     } catch (error) {
       console.error('Error fetching users:', error);
-      toast.error('Error fetching users');
+      toast.error(error.response?.data?.message || 'Error fetching users');
     }
   };
 
   useEffect(() => {
-    fetchAllUsers();
-  }, []);
+    fetchAllUsers(); // Load users when component mounts
+  }, [token]);
 
+  // Handle adding/updating user
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     if (!name || !email) {
       toast.error('Please fill out both name and email.');
       return;
     }
 
     const userPayload = { name, email, role };
-
     try {
       let response;
       if (currentUserId) {
-        // Update existing user
-        response = await axios.put(`${url}/api/admin/users/${currentUserId}`, userPayload, { headers: { Authorization: `Bearer ${token}` } });
-       
+        response = await axios.put(`${url}/api/admin/users/${currentUserId}`, userPayload, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
       } else {
-        // Add new user
-        response = await axios.post(`${url}/api/admin/users`, userPayload, { headers: { Authorization: `Bearer ${token}` } });
+        response = await axios.post(`${url}/api/admin/users`, userPayload, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
       }
 
-      if (response.data && response.data.success) {
+      if (response.data.success) {
         toast.success(currentUserId ? 'User updated successfully' : 'User added successfully');
-        fetchAllUsers(); // Refresh the user list after submission
-        resetForm(); // Reset form fields
-      } else {
-        toast.error('Error adding/updating user: ' + (response.data.message || ''));
+        fetchAllUsers();
+        resetForm(); // Reset form after adding/updating user
       }
     } catch (error) {
       console.error('Error adding/updating user:', error);
-      toast.error('Error adding/updating user: ' + (error.response?.data?.message || ''));
+      toast.error(error.response?.data?.message || 'Error adding/updating user');
     }
   };
 
+  // Edit an existing user by pre-filling the form
   const handleEdit = (user) => {
     setName(user.name);
     setEmail(user.email);
@@ -81,23 +75,26 @@ const UserManagement = ({ token, url }) => {
     setCurrentUserId(user._id);
   };
 
+  // Delete a user
   const handleDelete = async (userId) => {
-    if (!userId) return;
-
+    if (!userId || !token) return;
     try {
-      const response = await axios.delete(`${url}/api/admin/users/${userId}`, { headers: { Authorization: `Bearer ${token}` } });
-      if (response.data && response.data.success) {
+      const response = await axios.delete(`${url}/api/admin/users/${userId}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (response.data.success) {
         toast.success('User deleted successfully');
-        fetchAllUsers(); // Refresh the user list
+        fetchAllUsers();
       } else {
         toast.error('Error deleting user');
       }
     } catch (error) {
       console.error('Error deleting user:', error);
-      toast.error('Error deleting user: ' + (error.response?.data?.message || ''));
+      toast.error(error.response?.data?.message || 'Error deleting user');
     }
   };
 
+  // Reset form fields
   const resetForm = () => {
     setName('');
     setEmail('');
@@ -108,48 +105,50 @@ const UserManagement = ({ token, url }) => {
   return (
     <div className="admin-dashboard">
       <Navbar />
-      <hr/>
-   <div className="app-content"> 
-           <Sidebar /> 
-    <div className="user-management">
-      <h3>User Management</h3>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <select value={role} onChange={(e) => setRole(e.target.value)}>
-          <option value="user">User</option>
-          <option value="admin">Admin</option>
-        </select>
-        <button type="submit">{currentUserId ? 'Update User' : 'Add User'}</button>
-        {currentUserId && <button type="button" onClick={resetForm}>Cancel</button>}
-      </form>
+      <hr />
+      <div className="app-content">
+        <Sidebar />
+        <div className="user-management">
+          <h3>User Management</h3>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              placeholder="Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <select value={role} onChange={(e) => setRole(e.target.value)}>
+              <option value="user">User</option>
+              <option value="admin">Admin</option>
+            </select>
+            <button type="submit">{currentUserId ? 'Update User' : 'Add User'}</button>
+            {currentUserId && <button type="button" onClick={resetForm}>Cancel</button>}
+          </form>
 
-      <div className="user-list">
-        {users.length > 0 ? (
-          users.map((user) => (
-            <div key={user._id} className="user-item">
-              <p>{user.name} - {user.email} ({user.role})</p>
-              <button onClick={() => handleEdit(user)}>Edit</button>
-              <button onClick={() => handleDelete(user._id)}>Delete</button>
-            </div>
-          ))
-        ) : (
-          <p>No users found</p>
-        )}
-      </div>
-    </div>
+          <div className="user-list">
+            {users.length > 0 ? (
+              users.map((user) => (
+                <div key={user._id} className="user-item">
+                  <p>
+                    {user.name} - {user.email} ({user.role})
+                  </p>
+                  <button onClick={() => handleEdit(user)}>Edit</button>
+                  <button onClick={() => handleDelete(user._id)}>Delete</button>
+                </div>
+              ))
+            ) : (
+              <p>No users found</p>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );
