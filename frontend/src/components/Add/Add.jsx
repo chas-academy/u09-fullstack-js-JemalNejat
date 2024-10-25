@@ -56,9 +56,11 @@ const Add = ({url}) => {
   //},[data])
   
   return (
-     <div className="app-content"> 
-            <hr />
-     <Sidebar />  
+       <div className="admin-dashboard">
+      <Navbar />
+      <hr/>
+   <div className="app-content"> 
+           <Sidebar />  
 
     <div className='add'>
           
