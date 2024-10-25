@@ -111,6 +111,7 @@ const Add = ({url}) => {
       
     </div>
           </div>
+          </div>
         
   )
 }
