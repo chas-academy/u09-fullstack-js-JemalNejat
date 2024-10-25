@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 import { StoreContext } from '../../context/StoreContext';
 import { Sidebar } from '../../pages/Admin/AdminDashboard';  
-import { Sidebar } from '../../pages/Admin/AdminDashboard'; 
+import { Navbar } from '../../pages/Admin/AdminDashboard'; 
 
 const UserManagement = () => {
   const { token, url } = useContext(StoreContext);
