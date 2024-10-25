@@ -2,10 +2,10 @@ import React, { useContext, useEffect, useState } from 'react';
 import './Users.css';
 import { toast } from 'react-toastify';
 import axios from 'axios';
-import { StoreContext } from '../../context/StoreContext';
 
-const UserManagement = () => {
-  const { token, url } = useContext(StoreContext);
+
+const UserManagement = ({ token, url }) => {
+  
   const [users, setUsers] = useState([]);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
