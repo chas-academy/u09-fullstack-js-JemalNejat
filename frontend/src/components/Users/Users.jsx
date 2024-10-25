@@ -101,6 +101,7 @@ const UserManagement = () => {
   };
 
   return (
+    <hr />
    <div className="app-content"> 
      <Sidebar /> 
    <div className="user-management">
