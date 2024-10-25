@@ -16,7 +16,10 @@ const UserManagement = ({ token, url }) => {
 
   const fetchAllUsers = async () => {
     try {
-      const response = await axios.get(`${url}/api/admin/users`, {headers: {token}});
+      const response = await axios.get(`${url}/api/admin/users`, {
+       headers: { Authorization: `Bearer ${token}` }
+     });
+
 
       console.log("Users response", response);
 
@@ -51,10 +54,11 @@ const UserManagement = ({ token, url }) => {
       let response;
       if (currentUserId) {
         // Update existing user
-        response = await axios.put(`${url}/api/admin/users/${currentUserId}`, userPayload, {headers:{token}});
+        response = await axios.put(`${url}/api/admin/users/${currentUserId}`, userPayload, { headers: { Authorization: `Bearer ${token}` } });
+       
       } else {
         // Add new user
-        response = await axios.post(`${url}/api/admin/users`, userPayload, {headers:{token}});
+        response = await axios.post(`${url}/api/admin/users`, userPayload, { headers: { Authorization: `Bearer ${token}` } });
       }
 
       if (response.data && response.data.success) {
@@ -81,7 +85,7 @@ const UserManagement = ({ token, url }) => {
     if (!userId) return;
 
     try {
-      const response = await axios.delete(`${url}/api/admin/users/${userId}`, {headers:{token}});
+      const response = await axios.delete(`${url}/api/admin/users/${userId}`, { headers: { Authorization: `Bearer ${token}` } });
       if (response.data && response.data.success) {
         toast.success('User deleted successfully');
         fetchAllUsers(); // Refresh the user list
