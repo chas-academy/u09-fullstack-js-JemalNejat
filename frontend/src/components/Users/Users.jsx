@@ -3,7 +3,7 @@ import './Users.css';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import { Sidebar, Navbar } from '../../pages/Admin/AdminDashboard';
-import { UserProvider } from '../../context/UserContext';
+import { UserContext } from '../../context/UserContext';
 
 const UserManagement = () => {
   const { token, url } = useContext(UserContext); // Use context for token and URL if applicable
