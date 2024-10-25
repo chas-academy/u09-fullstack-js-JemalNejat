@@ -100,6 +100,11 @@ const UserManagement = ({ token, url }) => {
   };
 
   return (
+    <div className="admin-dashboard">
+      <Navbar />
+      <hr/>
+   <div className="app-content"> 
+           <Sidebar /> 
     <div className="user-management">
       <h3>User Management</h3>
       <form onSubmit={handleSubmit}>
@@ -137,6 +142,8 @@ const UserManagement = ({ token, url }) => {
         ) : (
           <p>No users found</p>
         )}
+      </div>
+    </div>
       </div>
     </div>
   );
