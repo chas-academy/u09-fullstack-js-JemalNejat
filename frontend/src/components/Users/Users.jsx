@@ -5,7 +5,7 @@ import axios from 'axios';
 import { StoreContext } from '../../context/StoreContext';
 import { Sidebar } from '../../pages/Admin/AdminDashboard';  
 
-const UserManagement = ({url}) => {
+const UserManagement = () => {
   const { token, url } = useContext(StoreContext);
   const [users, setUsers] = useState([]);
   const [name, setName] = useState('');
