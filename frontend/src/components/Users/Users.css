@@ -48,10 +48,10 @@ hr {
   margin-bottom: 20px;
 }
 
-/* Updated user-item styles to align with order-item */
+
 .user-item {
   display: grid;
-  grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr; /* Match grid columns */
+  grid-template-columns: 0.5fr 2fr 1fr ; 
   align-items: start;
   gap: 30px;
   border: 1px solid tomato;
