@@ -3,10 +3,10 @@ import './Users.css';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import { Sidebar, Navbar } from '../../pages/Admin/AdminDashboard';
-import { StoreContext } from '../../context/StoreContext';
+import { UserProvider } from '../../context/UserContext';
 
 const UserManagement = () => {
-  const { token, url } = useContext(StoreContext); // Use context for token and URL if applicable
+  const { token, url } = useContext(UserContext); // Use context for token and URL if applicable
   const [users, setUsers] = useState([]);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
