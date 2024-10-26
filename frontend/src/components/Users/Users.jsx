@@ -4,11 +4,12 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 import { Sidebar, Navbar } from '../../pages/Admin/AdminDashboard';
 
-import  UserContext  from '../../context/UserContext';
+
+import { StoreContext } from '../../context/StoreContext';
 
 
-const UserManagement = () => {
-  const { token, url } = useContext(UserContext); // Use context for token and URL if applicable
+const UserManagement = ({url}) => {
+ const { token, url } = useContext(StoreContext);
   const [users, setUsers] = useState([]);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
