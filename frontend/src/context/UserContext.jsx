@@ -9,7 +9,7 @@ const UserProvider = (props) => {
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(false);
     const url = "https://u09-fullstack-js-jemalnejat-backend.onrender.com";
-    const [token, setToken] = useState(localStorage.getUser("token") || "");
+    const [token, setToken] = useState(localStorage.getItem("token") || "");
 
     useEffect(() => {
         if (token) {
