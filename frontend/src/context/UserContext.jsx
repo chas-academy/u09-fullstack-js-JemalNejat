@@ -1,4 +1,3 @@
-// UserContext.js
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -20,14 +19,21 @@ const UserProvider = (props) => {
     }, [token]);
 
     const fetchAllUsers = async () => {
-        if (!token) return toast.error("Please log in to view users.");
+        if (!token) {
+            toast.error("Please log in to view users.");
+            return;
+        }
+
         setLoading(true);
         try {
             const response = await axios.get(`${url}/api/admin/users`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
-            if (response.data.success) setUsers(response.data.users);
-            else toast.error("Error fetching users");
+            if (response.data.success) {
+                setUsers(response.data.users);
+            } else {
+                toast.error("Error fetching users");
+            }
         } catch (error) {
             toast.error(error.response?.data?.message || "Error fetching users");
         } finally {
@@ -36,14 +42,18 @@ const UserProvider = (props) => {
     };
 
     const addUser = async (userPayload) => {
-        if (!token) return toast.error("Please log in to add a user.");
+        if (!token) {
+            toast.error("Please log in to add a user.");
+            return;
+        }
+
         try {
             const response = await axios.post(`${url}/api/admin/users`, userPayload, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             if (response.data.success) {
                 toast.success("User added successfully");
-                fetchAllUsers();
+                setUsers(prevUsers => [...prevUsers, response.data.user]); // Optimistic update
             }
         } catch (error) {
             toast.error(error.response?.data?.message || "Error adding user");
@@ -51,14 +61,20 @@ const UserProvider = (props) => {
     };
 
     const updateUser = async (userId, userPayload) => {
-        if (!token) return toast.error("Please log in to update a user.");
+        if (!token) {
+            toast.error("Please log in to update a user.");
+            return;
+        }
+
         try {
             const response = await axios.put(`${url}/api/admin/users/${userId}`, userPayload, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             if (response.data.success) {
                 toast.success("User updated successfully");
-                fetchAllUsers();
+                setUsers(prevUsers => 
+                    prevUsers.map(user => user.id === userId ? response.data.user : user)
+                ); // Optimistic update
             }
         } catch (error) {
             toast.error(error.response?.data?.message || "Error updating user");
@@ -66,14 +82,18 @@ const UserProvider = (props) => {
     };
 
     const deleteUser = async (userId) => {
-        if (!token) return toast.error("Please log in to delete a user.");
+        if (!token) {
+            toast.error("Please log in to delete a user.");
+            return;
+        }
+
         try {
             const response = await axios.delete(`${url}/api/admin/users/${userId}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             if (response.data.success) {
                 toast.success("User deleted successfully");
-                fetchAllUsers();
+                setUsers(prevUsers => prevUsers.filter(user => user.id !== userId)); // Optimistic update
             }
         } catch (error) {
             toast.error(error.response?.data?.message || "Error deleting user");
