@@ -74,11 +74,12 @@ const updateUser = async (req, res) => {
     }
 };
 
+
 // Delete user
 const deleteUser = async (req, res) => {
-    const { email } = req.body;
+    const userId = req.params.id; // Extract user ID from the request parameters
     try {
-        const exists = await userModel.findOneAndDelete({ email });
+        const exists = await userModel.findByIdAndDelete(userId); // Use findByIdAndDelete to remove the user by ID
         if (!exists) {
             return res.json({ success: false, message: "Cannot find user to delete" });
         }
@@ -86,9 +87,10 @@ const deleteUser = async (req, res) => {
 
     } catch (error) {
         console.log(error);
-        res.json({ success: false, message: "Error" });
+        res.json({ success: false, message: "Error deleting user" });
     }
 };
+
 
 // Fetch all users
 const fetchAllUsers = async (req, res) => {
