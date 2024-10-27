@@ -10,7 +10,7 @@ export const StoreContext = createContext(null)
 const StoreContextProvider = (props) => {
 
     const [cartItems,setCartItems] = useState({});
-    const url = "https://u09-fullstack-js-jemalnejat-backend.onrender.com"
+    const url = "https://u09-fullstack-js-jemalnejat-backend.onrender.com";
     const [token,setToken] = useState("");
     // eslint-disable-next-line no-unused-vars
     const [food_list,setFoodList] = useState([])
