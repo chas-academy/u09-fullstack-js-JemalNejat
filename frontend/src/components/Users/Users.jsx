@@ -87,24 +87,24 @@ const UserManagement = () => {
 
 
   // Delete a user
-  const delateUser = async (userId) => {
-    if (!userId || !token) return;
-    try {
-      const response = await axios.delete(`${url}/api/admin/users/${userId}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      if (response.data.success) {
-        toast.success('User deleted successfully');
-        fetchAllUsers();
-      } else {
-        toast.error('Error deleting user');
-      }
-    } catch (error) {
-      console.error('Error deleting user:', error);
-      toast.error(error.response?.data?.message || 'Error deleting user');
-    }
-  };
-   delateUser();
+      const deleteUser = async (userId) => {
+        if (!userId || !token) return;
+        try {
+            const response = await axios.delete(`${url}/api/admin/users/${userId}`, {
+                headers: { Authorization: `Bearer ${token}` },
+            });
+            if (response.data.success) {
+                toast.success('User deleted successfully');
+                fetchAllUsers(); // Refresh the user list after deletion
+            } else {
+                toast.error('Error deleting user');
+            }
+        } catch (error) {
+            console.error('Error deleting user:', error);
+            toast.error(error.response?.data?.message || 'Error deleting user');
+        }
+    };
+
 
 
  
@@ -156,7 +156,7 @@ const UserManagement = () => {
                     {user.name} - {user.email} ({user.role})
                   </p>
                   <button onClick={() => handleEdit(user)}>Edit</button>
-                  <button onClick={() => delateUser(user._id)}>Delete</button>
+                  <button onClick={() => deleteUser(user._id)}>Delete</button> 
                 </div>
               ))
             ) : (
