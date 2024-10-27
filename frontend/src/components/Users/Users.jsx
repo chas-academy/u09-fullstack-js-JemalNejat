@@ -9,6 +9,7 @@ import { StoreContext } from '../../context/StoreContext';
 
 
 const UserManagement = () => {
+ const url = "https://u09-fullstack-js-jemalnejat-backend.onrender.com";
  const { token, url } = useContext(StoreContext);
   const [users, setUsers] = useState([]);
   const [name, setName] = useState('');
