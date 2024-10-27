@@ -40,37 +40,43 @@ const UserManagement = () => {
   }, [token]);
 
   const addUser = async (event) => {
-    event.preventDefault();
-    if (!name || !email) {
-      toast.error('Please fill out both name and email.');
-      return;
-    }
+        event.preventDefault();
+        if (!name || !email) {
+            toast.error('Please fill out both name and email.');
+            return;
+        }
 
-    const userPayload = { name, email, role };
-    if (password) userPayload.password = password; // Include password if provided
+        // Create user payload
+        const userPayload = { name, email, role };
+        if (currentUserId === null) {
+            userPayload.password = password; // Only add password for new users
+        }
 
-    try {
-      let response;
-      if (currentUserId) {
-        response = await axios.put(`${url}/api/admin/users/${currentUserId}`, userPayload, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-      } else {
-        response = await axios.post(`${url}/api/admin/users`, userPayload, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-      }
+        try {
+            let response;
+            if (currentUserId) {
+                response = await axios.put(`${url}/api/admin/users/${currentUserId}`, userPayload, {
+                    headers: { Authorization: `Bearer ${token}` },
+                });
+            } else {
+                response = await axios.post(`${url}/api/admin/users`, userPayload, {
+                    headers: { Authorization: `Bearer ${token}` },
+                });
+            }
 
-      if (response.data.success) {
-        toast.success(currentUserId ? 'User updated successfully' : 'User added successfully');
-        fetchAllUsers();
-        resetForm(); // Reset form after adding/updating user
-      }
-    } catch (error) {
-      console.error('Error adding/updating user:', error);
-      toast.error(error.response?.data?.message || 'Error adding/updating user');
-    }
-  };
+            if (response.data.success) {
+                toast.success(currentUserId ? 'User updated successfully' : 'User added successfully');
+                fetchAllUsers();
+                resetForm();
+            } else {
+                toast.error(response.data.message || 'Error adding/updating user');
+            }
+        } catch (error) {
+            console.error('Error adding/updating user:', error);
+            toast.error(error.response?.data?.message || 'Error adding/updating user');
+        }
+    };
+
 
   const editUser = (user) => {
     setName(user.name);
