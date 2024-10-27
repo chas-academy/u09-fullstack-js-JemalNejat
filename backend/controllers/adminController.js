@@ -3,16 +3,19 @@ import bcrypt from "bcryptjs";
 import validator from "validator";
 
 // Add user
-const addUser = async (req, res) => {
-    const { name, password, email } = req.body;
+
+ const addUser = async (req, res) => {
+    const { name, password, email, role } = req.body; 
+
     try {
         // Checking if user already exists
         const exists = await userModel.findOne({ email });
         if (exists) {
             return res.json({ success: false, message: "User already exists" });
         }
+         
+      
 
-        // Validating email format and strong password
         if (!validator.isEmail(email)) {
             return res.json({ success: false, message: "Please enter a valid email!" });
         }
@@ -26,7 +29,7 @@ const addUser = async (req, res) => {
         const newUser = new userModel({
             name: name,
             email: email,
-            role: "user",
+            role: role || "user", // Default to user if no role is provided
             password: hashedPassword,
         });
         await newUser.save();
@@ -34,9 +37,10 @@ const addUser = async (req, res) => {
 
     } catch (error) {
         console.log(error);
-        res.json({ success: false, message: "Error" });
+        res.json({ success: false, message: "Error adding user" });
     }
 };
+
 
 // Update user
 
