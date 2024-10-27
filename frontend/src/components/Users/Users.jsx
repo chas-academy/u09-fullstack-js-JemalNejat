@@ -39,7 +39,7 @@ const UserManagement = () => {
     fetchAllUsers(); // Load users when component mounts
   }, [token]);
 
-  const handleSubmit = async (event) => {
+  const addUser = async (event) => {
     event.preventDefault();
     if (!name || !email) {
       toast.error('Please fill out both name and email.');
@@ -72,7 +72,7 @@ const UserManagement = () => {
     }
   };
 
-  const handleEdit = (user) => {
+  const editUser = (user) => {
     setName(user.name);
     setEmail(user.email);
     setRole(user.role);
@@ -114,7 +114,7 @@ const UserManagement = () => {
         <Sidebar />
         <div className="user-management">
           <h3>User Management</h3>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={addUser}>
             <input
               type="text"
               placeholder="Name"
@@ -150,7 +150,7 @@ const UserManagement = () => {
                   <p>
                     {user.name} - {user.email} ({user.role})
                   </p>
-                  <button onClick={() => handleEdit(user)}>Edit</button>
+                  <button onClick={() => editUser(user)}>Edit</button>
                   <button onClick={() => deleteUser(user._id)}>Delete</button> 
                 </div>
               ))
