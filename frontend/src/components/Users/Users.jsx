@@ -75,6 +75,7 @@ const UserManagement = () => {
       toast.error(error.response?.data?.message || 'Error adding/updating user');
     }
   };
+ handleSubmit();
 
   // Edit an existing user by pre-filling the form
   const handleEdit = (user) => {
@@ -83,6 +84,7 @@ const UserManagement = () => {
     setRole(user.role);
     setCurrentUserId(user._id);
   };
+ handleEdit();
 
   // Delete a user
   const handleDelete = async (userId) => {
@@ -102,7 +104,7 @@ const UserManagement = () => {
       toast.error(error.response?.data?.message || 'Error deleting user');
     }
   };
-
+handleDelete();
   // Reset form fields
   const resetForm = () => {
     setName('');
@@ -110,6 +112,7 @@ const UserManagement = () => {
     setRole('user');
     setCurrentUserId(null);
   };
+ resetForm();
 
   return (
     <div className="admin-dashboard">
