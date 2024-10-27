@@ -104,7 +104,10 @@ const UserManagement = () => {
       toast.error(error.response?.data?.message || 'Error deleting user');
     }
   };
+ handleDelete();
 
+
+ 
   // Reset form fields
   const resetForm = () => {
     setName('');
