@@ -24,7 +24,7 @@ const UserManagement = () => {
            return;
        }
        try {
-           const response = await axios.get(`https://u09-fullstack-js-jemalnejat-backend.onrender.com/api/admin/users`, {
+           const response = await axios.get(`${url}/api/admin/users`, {
                headers: { Authorization: `Bearer ${token}` },
            });
            if (response.data.success) {
