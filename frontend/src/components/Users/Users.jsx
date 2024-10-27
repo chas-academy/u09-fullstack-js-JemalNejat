@@ -87,7 +87,7 @@ const UserManagement = () => {
 
 
   // Delete a user
-  const handleDelete = async (userId) => {
+  const delateUser = async (userId) => {
     if (!userId || !token) return;
     try {
       const response = await axios.delete(`${url}/api/admin/users/${userId}`, {
@@ -104,7 +104,7 @@ const UserManagement = () => {
       toast.error(error.response?.data?.message || 'Error deleting user');
     }
   };
- handleDelete();
+   delateUser();
 
 
  
@@ -156,7 +156,7 @@ const UserManagement = () => {
                     {user.name} - {user.email} ({user.role})
                   </p>
                   <button onClick={() => handleEdit(user)}>Edit</button>
-                  <button onClick={() => handleDelete(user._id)}>Delete</button>
+                  <button onClick={() => delateUser(user._id)}>Delete</button>
                 </div>
               ))
             ) : (
