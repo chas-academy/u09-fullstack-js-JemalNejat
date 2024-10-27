@@ -166,5 +166,5 @@ const UserManagement = () => {
   );
 };
 
-//export default UserManagement;
-export { UserManagement,fetchAllUsers };
+export default UserManagement;
+
