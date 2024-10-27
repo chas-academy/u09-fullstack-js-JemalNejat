@@ -9,6 +9,7 @@ import profile_icon from './profile_icon.png'
 
 
 export const url = "https://u09-fullstack-js-jemalnejat-backend.onrender.com";
+  const url = "https://u09-fullstack-js-jemalnejat-backend.onrender.com";
 
 export const assets ={
     logo,
