@@ -59,22 +59,46 @@ const placeOrder = async (req, res) => {
 
     }
 };
-const verifyOrder = async (req,res) => {
-   const {orderId,success} = req.body;
-   try {
-       if (success=="true") {
-        await orderModel.findByIdAndUpdate(orderId,{payment:true});
-         res.json({success:true,message:"Paid"})
-       }else{
-        await orderModel.findByIdAndDelete(orderId);
-        res.json({success:false,message:"Not Paid"})
-       }
-   }catch (error) {
-    console.log(error);
-    res.json({success:false,message:"Error"})
+const verifyOrder = async (req, res) => {
+   const { orderId, success } = req.body;
 
+   // Basic validation for inputs
+   if (!orderId || typeof success === 'undefined') {
+       return res.status(400).json({ success: false, message: "Invalid input" });
    }
-}
+
+   try {
+       if (success === "true") {
+           // Update the order's payment status to true
+           const updateResult = await orderModel.findByIdAndUpdate(
+               orderId,
+               { payment: true },
+               { new: true } // Option to return the updated document
+           );
+
+           if (!updateResult) {
+               // If no document was found with the provided orderId
+               return res.status(404).json({ success: false, message: "Order not found" });
+           }
+
+           res.json({ success: true, message: "Paid", order: updateResult });
+       } else {
+           // Delete the order if payment was not successful
+           const deleteResult = await orderModel.findByIdAndDelete(orderId);
+
+           if (!deleteResult) {
+               // If no document was found with the provided orderId
+               return res.status(404).json({ success: false, message: "Order not found" });
+           }
+
+           res.json({ success: false, message: "Not Paid", deletedOrderId: orderId });
+       }
+   } catch (error) {
+       console.error('Error in verifyOrder:', error);
+       res.status(500).json({ success: false, message: "Server error" });
+   }
+};
+
 //user order for fronten
 const userOrders = async (req,res) => {
 try {
