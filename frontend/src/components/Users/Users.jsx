@@ -3,48 +3,42 @@ import './Users.css';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import { Sidebar, Navbar } from '../../pages/Admin/AdminDashboard';
-
-
 import { StoreContext } from '../../context/StoreContext';
 
-
 const UserManagement = () => {
- const url = "https://u09-fullstack-js-jemalnejat-backend.onrender.com";
- const { token } = useContext(StoreContext);
+  const url = "https://u09-fullstack-js-jemalnejat-backend.onrender.com";
+  const { token } = useContext(StoreContext);
   const [users, setUsers] = useState([]);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [role, setRole] = useState('user');
+  const [password, setPassword] = useState(''); // New state for password
   const [currentUserId, setCurrentUserId] = useState(null);
 
-  // Fetch all users on initial render
-     const fetchAllUsers = async () => {
-       if (!token) {
-           toast.error('You must be logged in to view users.');
-           return;
-       }
-       try {
-           const response = await axios.get(`${url}/api/admin/users`, {
-               headers: { Authorization: `Bearer ${token}` },
-           });
-           if (response.data.success) {
-               setUsers(response.data.users || []);
-           } else {
-               toast.error('Error fetching users');
-           }
-       } catch (error) {
-           console.error('Error fetching users:', error);
-           toast.error(error.response?.data?.message || 'Error fetching users');
-       }
-   };
- fetchAllUsers();
-
+  const fetchAllUsers = async () => {
+    if (!token) {
+      toast.error('You must be logged in to view users.');
+      return;
+    }
+    try {
+      const response = await axios.get(`${url}/api/admin/users`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (response.data.success) {
+        setUsers(response.data.users || []);
+      } else {
+        toast.error('Error fetching users');
+      }
+    } catch (error) {
+      console.error('Error fetching users:', error);
+      toast.error(error.response?.data?.message || 'Error fetching users');
+    }
+  };
 
   useEffect(() => {
     fetchAllUsers(); // Load users when component mounts
   }, [token]);
 
-  // Handle adding/updating user
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!name || !email) {
@@ -53,6 +47,8 @@ const UserManagement = () => {
     }
 
     const userPayload = { name, email, role };
+    if (password) userPayload.password = password; // Include password if provided
+
     try {
       let response;
       if (currentUserId) {
@@ -75,47 +71,40 @@ const UserManagement = () => {
       toast.error(error.response?.data?.message || 'Error adding/updating user');
     }
   };
- 
 
-  // Edit an existing user by pre-filling the form
   const handleEdit = (user) => {
     setName(user.name);
     setEmail(user.email);
     setRole(user.role);
     setCurrentUserId(user._id);
+    setPassword(''); // Clear the password field when editing
   };
 
+  const deleteUser = async (userId) => {
+    if (!userId || !token) return;
+    try {
+      const response = await axios.delete(`${url}/api/admin/users/${userId}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (response.data.success) {
+        toast.success('User deleted successfully');
+        fetchAllUsers(); // Refresh the user list after deletion
+      } else {
+        toast.error('Error deleting user');
+      }
+    } catch (error) {
+      console.error('Error deleting user:', error);
+      toast.error(error.response?.data?.message || 'Error deleting user');
+    }
+  };
 
-  // Delete a user
-      const deleteUser = async (userId) => {
-        if (!userId || !token) return;
-        try {
-            const response = await axios.delete(`${url}/api/admin/users/${userId}`, {
-                headers: { Authorization: `Bearer ${token}` },
-            });
-            if (response.data.success) {
-                toast.success('User deleted successfully');
-                fetchAllUsers(); // Refresh the user list after deletion
-            } else {
-                toast.error('Error deleting user');
-            }
-        } catch (error) {
-            console.error('Error deleting user:', error);
-            toast.error(error.response?.data?.message || 'Error deleting user');
-        }
-    };
-
-
-
- 
-  // Reset form fields
   const resetForm = () => {
     setName('');
     setEmail('');
     setRole('user');
+    setPassword(''); // Reset password field
     setCurrentUserId(null);
   };
-
 
   return (
     <div className="admin-dashboard">
@@ -139,6 +128,12 @@ const UserManagement = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
+            />
+            <input
+              type="password"
+              placeholder="Password (leave blank to keep current)"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <select value={role} onChange={(e) => setRole(e.target.value)}>
               <option value="user">User</option>
@@ -170,4 +165,3 @@ const UserManagement = () => {
 };
 
 export default UserManagement;
-
