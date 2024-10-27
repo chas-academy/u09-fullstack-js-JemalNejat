@@ -37,6 +37,7 @@ const UserManagement = () => {
            toast.error(error.response?.data?.message || 'Error fetching users');
        }
    };
+ fetchAllUsers();
 
 
   useEffect(() => {
