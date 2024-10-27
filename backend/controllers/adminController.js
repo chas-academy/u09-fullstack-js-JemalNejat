@@ -39,40 +39,40 @@ const addUser = async (req, res) => {
 };
 
 // Update user
+
 const updateUser = async (req, res) => {
     const { name, password, email, role } = req.body;
+    const userId = req.params.id; // Get the user ID from the request parameters
     try {
-        // Checking if user exists
-        const dbUser = await userModel.findOne({ email });
+        // Find the user by ID
+        const dbUser = await userModel.findById(userId);
         if (!dbUser) {
             return res.json({ success: false, message: "Cannot find user to update" });
         }
 
-        // Validating email format and strong password
-        if (!validator.isEmail(email)) {
-            return res.json({ success: false, message: "Please enter a valid email!" });
-        }
-        if (password.length < 8) {
-            return res.json({ success: false, message: "Please enter a strong password" });
+        // Update user fields
+        dbUser.name = name;
+        dbUser.email = email;
+        dbUser.role = role;
+
+        // Update password if provided
+        if (password) {
+            if (password.length < 8) {
+                return res.json({ success: false, message: "Please enter a strong password" });
+            }
+            const salt = await bcrypt.genSalt(10);
+            dbUser.password = await bcrypt.hash(password, salt);
         }
 
-        // Hashing user password
-        const salt = await bcrypt.genSalt(10);
-        const hashedPassword = await bcrypt.hash(password, salt);
-        const updatedUser = new userModel({
-            name: name,
-            email: email,
-            role: role,
-            password: hashedPassword,
-        });
-        await updatedUser.save();
+        await dbUser.save();
         res.json({ success: true, message: "User updated successfully" });
 
     } catch (error) {
         console.log(error);
-        res.json({ success: false, message: "Error" });
+        res.json({ success: false, message: "Error updating user" });
     }
 };
+
 
 
 // Delete user
