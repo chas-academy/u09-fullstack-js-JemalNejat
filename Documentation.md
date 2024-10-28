@@ -15,8 +15,8 @@
     - [Key Backend Features](#key-backend-features)
 4. [API](#api)
     - [MongoDB](#mongodb)
-    - [Stripe Payment Integration](#stripe-payment-integration)
-    - [API Testing with Insomnia](#api-testing-with-insomnia)
+    - [Stripe Payment Integration](https://docs.stripe.com/testing#international-cards)
+    - [API Testing with Thunder Client](https://www.thunderclient.com/)
 
 ---
 
@@ -73,7 +73,7 @@ For the frontend, I used **React** with **JSX** and **CSS** to design a clean, r
 
 1. **Install React with Vite**:
     ```bash
-    npm create vite@latest foodify --template react
+    npm create vite@latest  --template react
     ```
     Chose **React (JavaScript)** for the project.
    
