@@ -1,5 +1,5 @@
 
-# Foodify - Food Delivery App Full Documentation
+# FoodJET - Food Delivery App Full Documentation
 
 ## Table of Contents
 1. [UX](#ux)
@@ -61,7 +61,7 @@ Based on this data, I created personas, a site map, and a prototype to guide the
 
 ### Prototype
 
-**Lo-Fi Prototype Link**: [Link to Prototype](#)
+**Lo-Fi Prototype Link**: [Link to Prototype](https://www.figma.com/design/jl5f97Ctxu478pvYIALP4t/U09?node-id=0-1&node-type=canvas&t=lzv9ZaqrTrGt71Fw-0)
 
 **Site Map Link**: [Link to Sitemap](https://www.figma.com/design/Yi6mVqUDmB38yBbr8OKIIX/U09-Site-Map?node-id=0-1&node-type=canvas&t=tqGAaKdOHQzCmcv5-0)
 
