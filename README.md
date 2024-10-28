@@ -38,7 +38,7 @@ FoodJET is an online food delivery application that allows users to order meals 
 2. **Menu & Categories**: Develop browsing and filtering for food categories.
 3. **Ordering Process**: Enable multi-category selection, cart, and checkout.
 4. **Stripe Payment Integration**:
-   - Secure, multi-method payment options, and webhook support for payment updates.
+   - Secure, multi-method payment options for payment.
 5. **Admin Dashboard**: Simple management for menu, and orders, users.
 
 ---
