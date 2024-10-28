@@ -1,78 +1,74 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
-*{
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: Outfit ;
+  font-family: Outfit;
 }
-body{
+body {
   min-height: 100vw;
   background-color: #fcfcfc;
 }
-a{
+a {
   text-decoration: none;
   color: inherit;
 }
-hr{
+hr {
   border: none;
   height: 1px;
   background-color: #a9a9a9;
 }
-.app-content{
+.app-content {
   display: flex;
 }
-.flex-col{
+.flex-col {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-.cursor{
+.cursor {
   cursor: pointer;
-
 }
-.order-item{
-    display: grid;
-    grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr;
-    align-items: start;
-    gap: 30px;
-    border: 1px solid tomato;
-    padding: 20px;
-    margin: 30px 0px;
-    font-size: 14px;
-    color: #505050;
-    
+.order-item {
+  display: grid;
+  grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr;
+  align-items: start;
+  gap: 30px;
+  border: 1px solid tomato;
+  padding: 20px;
+  margin: 30px 0px;
+  font-size: 14px;
+  color: #505050;
 }
-.order-item-food, .order-item-name{
-    font-weight: 600;
+.order-item-food,
+.order-item-name {
+  font-weight: 600;
 }
-.order-item-name{
-    margin-top: 30px;
-    margin-bottom: 5px;
+.order-item-name {
+  margin-top: 30px;
+  margin-bottom: 5px;
 }
-.order-item-address{
-    margin-bottom: 10px;
-
+.order-item-address {
+  margin-bottom: 10px;
 }
-.order-item select{
-    background-color: #ffe8e4;
-    border: 1px solid tomato;
-    width: max(10vw,120px);
-    padding: 10px;
-    outline: none;
+.order-item select {
+  background-color: #ffe8e4;
+  border: 1px solid tomato;
+  width: max(10vw, 120px);
+  padding: 10px;
+  outline: none;
 }
-@media (max-width:1000px) {
-    .order-item{
-        font-size: 12px;
-        grid-template-columns: 0.5fr 2fr 1fr;
-        padding: 15px 8px;
-    }
-    .order-item select{
-        padding: 5px;
-        font-size: 12px;
-    }
-    .order-item img{
-        width: 40px;
-    }
-    
+@media (max-width: 1000px) {
+  .order-item {
+    font-size: 12px;
+    grid-template-columns: 0.5fr 2fr 1fr;
+    padding: 15px 8px;
+  }
+  .order-item select {
+    padding: 5px;
+    font-size: 12px;
+  }
+  .order-item img {
+    width: 40px;
+  }
 }

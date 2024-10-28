@@ -1,8 +1,13 @@
 import express from "express";
-import { addUser, updateUser, deleteUser, fetchAllUsers } from "../controllers/adminController.js";
- 
-import adminMiddleware from "../middleware/admin.js"; 
-import authMiddleware from '../middleware/auth.js';
+import {
+  addUser,
+  updateUser,
+  deleteUser,
+  fetchAllUsers,
+} from "../controllers/adminController.js";
+
+import adminMiddleware from "../middleware/admin.js";
+import authMiddleware from "../middleware/auth.js";
 
 const adminRouter = express.Router();
 

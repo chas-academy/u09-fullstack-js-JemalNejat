@@ -1,36 +1,35 @@
-import userModel from "../models/userModel.js"
-import jwt from "jsonwebtoken"
-import bcrypt from "bcryptjs"
-import validator from "validator"
+import userModel from "../models/userModel.js";
+import jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs";
+import validator from "validator";
 
 //login user
 const loginUser = async (req, res) => {
-  const frontend_url = "https://u09-fullstack-js-jemalnejat-frontend.onrender.com"
-  const {email,password} = req.body;
+  const frontend_url =
+    "https://u09-fullstack-js-jemalnejat-frontend.onrender.com";
+  const { email, password } = req.body;
   try {
-     const user = await userModel.findOne({email});
-     if (!user) {
-      return res.json({success: false, message: "User dose not exists"})
-     }
-     
-     const isMatch = await bcrypt.compare(password, user.password);
+    const user = await userModel.findOne({ email });
+    if (!user) {
+      return res.json({ success: false, message: "User dose not exists" });
+    }
 
-     if (!isMatch) {
-      return res.json({success: false, message: "Invalid creadentials"})
-     }
-     const token = createToken(user._id, user.role);
-     res.json({success:true,token})
-  
+    const isMatch = await bcrypt.compare(password, user.password);
+
+    if (!isMatch) {
+      return res.json({ success: false, message: "Invalid creadentials" });
+    }
+    const token = createToken(user._id, user.role);
+    res.json({ success: true, token });
   } catch (error) {
     console.log(error);
-    res.json({success:false,message:"Error"})
-
+    res.json({ success: false, message: "Error" });
   }
 };
 
 const createToken = (id, role) => {
-    return jwt.sign({id, role},process.env.JWT_SECRET);
-}
+  return jwt.sign({ id, role }, process.env.JWT_SECRET);
+};
 
 //register user
 const registerUser = async (req, res) => {
@@ -55,18 +54,17 @@ const registerUser = async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
     const newUser = new userModel({
-       name:name,
-       email:email,
-       role:"user",
-       password:hashedPassword 
-    })
-    const user = await newUser.save()
-    const token = createToken(user._id, user.role)
-    res.json({success:true,token})
+      name: name,
+      email: email,
+      role: "user",
+      password: hashedPassword,
+    });
+    const user = await newUser.save();
+    const token = createToken(user._id, user.role);
+    res.json({ success: true, token });
   } catch (error) {
     console.log(error);
-    res.json({success:false,message:"Error"})
-
+    res.json({ success: false, message: "Error" });
   }
 };
 

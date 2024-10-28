@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
 
 * {
   padding: 0;
@@ -48,10 +48,9 @@ hr {
   margin-bottom: 20px;
 }
 
-
 .user-item {
   display: grid;
-  grid-template-columns: 0.5fr 2fr 1fr ; 
+  grid-template-columns: 0.5fr 2fr 1fr;
   align-items: start;
   gap: 30px;
   border: 1px solid tomato;
