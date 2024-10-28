@@ -19,11 +19,12 @@ FoodJET is an online food delivery application that allows users to order meals 
 5. **Order History**: 
    - Review past meals conveniently.
    
-### Admin Dashboard
+**Admin Dashboard**
+
 - **Menu & Order Management**:
-  - CRUD capabilities to manage food items and categories.
-  - Track and update order status.
-  - Manage user accounts.
+  - CRUD functionality for managing food items and categories.
+  - Order tracking and status updates.
+  - full CRUD User account management.
 
 ### Additional Features
 - **Order Tracking**: Real-time status updates for ongoing orders.
