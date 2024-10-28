@@ -181,11 +181,18 @@ Stripe is integrated for processing payments.
    - Users can pay using Stripe, with backend routes handling the payment initiation and confirmation.
    - Webhooks are used to listen for payment events from Stripe, ensuring payments are completed securely.
 
-### API Testing with Insomnia
+Sure! Here’s another version for your documentation:
 
-To test the API, I used **Insomnia** to simulate HTTP requests and validate the API functionality.
+---
 
-1. **GET /menu**: Test fetching food items by category.
-2. **POST /orders**: Test placing an order and confirming payment.
-3. **POST /payments**: Test initiating and confirming Stripe payments.
+## API Testing
+
+For testing purposes, I utilized **Thunder Client** to test CRUD operations on user accounts and menu items, including login and registration functionalities. Additionally, I employed **Insomnia** to simulate HTTP requests and validate the overall API functionality.
+
+### Key Endpoints Tested
+- **GET /menu**: Tested the retrieval of food items by category.
+- **POST /orders**: Verified the process of placing an order and confirming payment.
+- **POST /payments**: Checked the initiation and confirmation of payments through Stripe.
+
+---
 
