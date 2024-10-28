@@ -4,7 +4,7 @@
 
 ## Introduction
 
-Foodify is an online food delivery application that allows users to order meals from a curated menu, categorized into various food types. Users can browse and select food items from different categories and make secure payments through **Stripe**. This app is built using **React** for the frontend, **Express** and **Node.js** for the backend, and a **MongoDB** database.
+FoodiJET is an online food delivery application that allows users to order meals from a curated menu, categorized into various food types. Users can browse and select food items from different categories and make secure payments through **Stripe**. This app is built using **React** for the frontend, **Express** and **Node.js** for the backend, and a **MongoDB** database.
 
 ## Design
 
