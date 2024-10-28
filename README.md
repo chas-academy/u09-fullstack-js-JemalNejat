@@ -1,5 +1,5 @@
 
-# FoodiJET - Food Delivery App
+# FoodJET - Food Delivery App
 
 ## Introduction
 FoodJET is an online food delivery application that allows users to order meals from a curated, categorized menu with secure payments through **Stripe**. Built with **React** (frontend), **Node.js** and **Express** (backend), and a **MongoDB** database, this app offers both user-friendly ordering and an admin dashboard for efficient management.
