@@ -89,7 +89,7 @@ For the frontend, I used **React** with **JSX** and **CSS** to design a clean, r
 #### Key Frontend Features
 
 1. **Category-Based Menu**:
-   - Users can browse food items organized into categories such as **Appetizers**, **Main Courses**, **Desserts**, and **Drinks**.
+   - Users can browse food items organized into categories such as **Salad**, **Rolls**, **Sandwich**, **Cake**, **Pure Veg**, **Pasta**, **Noodles** and **Desserts**, 
 
 2. **Cart Management**:
    - Users can add items to their cart, adjust quantities, and proceed to checkout.
