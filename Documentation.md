@@ -47,7 +47,7 @@ Before developing the app, I conducted user research to understand my target aud
 
 #### Analysis (Stage 2):
 Based on the responses, the target audience is:
-- **Age**: 18-35 (Millennials and Gen Z).
+- **Age**: 18-35.
 - **Preferences**: Fast, easy-to-use menu browsing, with a preference for category filtering and fast checkout processes.
 - **Pain Points**: Complicated navigation and slow checkout.
 
