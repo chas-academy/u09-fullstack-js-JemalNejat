@@ -78,7 +78,7 @@ FoodJET is an online food delivery application that allows users to order meals 
 
 ## Tools & Resources
 
-- **Design**: Figma for UI/UX; FigJam for brainstorming.
+- **Design**: Figma for UI/UX.
 - **Feedback**: Google Forms for user surveys and feedback collection.
 
 
