@@ -26,13 +26,6 @@
 
 Before developing the app, I conducted user research to understand my target audience’s preferences and behavior regarding online food ordering. This research informed the app's design and functionality.
 
-#### Questions to Me:
-- **What do I already know?**
-  I know that I want to create a food delivery app that offers users a seamless way to browse categorized menus and process payments easily.
-  
-- **What do I want to gain from this study?**
-  I want to understand how users interact with food menus and how they prioritize ease of navigation, security, and payment methods.
-
 - **Steps for conducting this study:**
   I created a survey to gather user insights, followed up with in-depth interviews, and analyzed the data to inform design decisions.
 
