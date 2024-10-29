@@ -53,7 +53,7 @@ Based on the responses, the target audience is:
 
 Based on this data, I created personas, a site map, and a prototype to guide the project.
 
-### Personas
+### Personas and User stories
 
 **Persona Link**: [Link to Personas](https://docs.google.com/document/d/1-_-itfN2-aUfKN3HitbGSY7sqs7AveXqFciw5sad_kU/edit?tab=t.0)
 
