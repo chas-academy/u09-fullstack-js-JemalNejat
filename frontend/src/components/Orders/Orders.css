@@ -58,16 +58,21 @@ hr {
   padding: 10px;
   outline: none;
 }
-@media (max-width: 600px) {
+@media (max-width: 1000px) {
   .order-item {
     font-size: 12px;
-    grid-template-columns: 0.5fr 2fr 1fr;
+    grid-template-columns: 0.5fr 2fr 1fr 1fr;
     padding: 15px 8px;
+     align-items: center;
   }
+ 
   .order-item select {
+    width: 100%; 
+    max-width: 120px; 
     padding: 5px;
     font-size: 12px;
   }
+
   .order-item img {
     width: 40px;
   }
