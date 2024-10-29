@@ -58,7 +58,7 @@ hr {
   padding: 10px;
   outline: none;
 }
-@media (max-width: 1000px) {
+@media (max-width: 600px) {
   .order-item {
     font-size: 12px;
     grid-template-columns: 0.5fr 2fr 1fr;
