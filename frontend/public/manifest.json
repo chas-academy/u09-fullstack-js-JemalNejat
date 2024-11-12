@@ -12,12 +12,8 @@
     {
       "src": "src/assets/frontend_assets/mylogo.webp",
       "sizes": "180x164",
-      "type": "image/png"
+      "type": "image/webp"
     },
-    {
-      "src": "pwa-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
+  
   ]
 }
