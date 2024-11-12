@@ -40,7 +40,7 @@ const Navbar = ({ setShowLogin, setSearchQuery }) => {
   return (
     <div className="navbar">
       <Link to={"/"}>
-        <img src={frontendAssets.mylogo} alt="" className="logo" />
+        <img src={frontendAssets.mylogo_192x192} alt="" className="logo" />
       </Link>
 
       <ul className="navbar-menu">
