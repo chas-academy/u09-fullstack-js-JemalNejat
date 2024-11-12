@@ -10,7 +10,7 @@
   "theme_color": "#000000",
   "icons": [
     {
-      "src": "pwa-192x192.png",
+      "src": "src/assets/frontend_assets/mylogo.webp",
       "sizes": "192x192",
       "type": "image/png"
     },
