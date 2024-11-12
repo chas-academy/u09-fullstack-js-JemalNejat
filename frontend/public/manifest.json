@@ -10,12 +10,12 @@
   "background_color": "#ffffff",
   "icons": [
     {
-      "src": "frontend_assets/mylogo_192x192.png",
+      "src": "/mylogo_192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "frontend_assets/mylogo_512x512.png",
+      "src": "/mylogo_512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
