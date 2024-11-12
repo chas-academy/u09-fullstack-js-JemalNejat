@@ -82,7 +82,7 @@ export const assets = {
     logout_icon,
     bag_icon,
     parcel_icon,
-    mylogomylogo_192x192,
+    mylogo_192x192,
     mylogo_512x512,
 }
 
