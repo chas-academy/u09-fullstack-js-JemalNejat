@@ -11,7 +11,7 @@
   "icons": [
     {
       "src": "src/assets/frontend_assets/mylogo.webp",
-      "sizes": "192x192",
+      "sizes": "180x164",
       "type": "image/png"
     },
     {
