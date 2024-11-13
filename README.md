@@ -76,6 +76,14 @@ FoodJET is an online food delivery application that allows users to order meals 
 
 ---
 
+
+**PWA**
+
+Configured a PWA using `vite-plugin-pwa` to enable offline access and faster loading.
+
+First, I installed the plugin with `npm install vite-plugin-pwa`, then set up the PWA configuration in [`vite.config.js`](./Fronts/vite.config.js). Finally, I defined the app metadata in [`manifest.json`](./Fronts/public/manifest.json).
+
+---
 ## Tools & Resources
 
 - **Design**: Figma for UI/UX.
